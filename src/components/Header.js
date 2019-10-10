@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Logo from "../icons/Logo.js";
 
-const Title = styled.header`
+const HeaderWrapper = styled.header`
   height: 80px;
   width: 375px;
   background-color: rgb(0, 0, 0);
@@ -13,7 +13,7 @@ const Title = styled.header`
   border-image: linear-gradient(to right, rgba(37, 206, 197, 1), black) 50 15%;
 `;
 
-const Container = styled.div`
+const LogoContainer = styled.div`
   align-items: center;
   margin: 15px 15px;
   flex-direction: column;
@@ -33,13 +33,13 @@ const Menu = styled.img``;
 
 function Header() {
   return (
-    <Title>
-      <Container>
+    <HeaderWrapper>
+      <LogoContainer>
         <Logo />
-      </Container>
+      </LogoContainer>
       <Headline>EventListener</Headline>
       <Menu></Menu>
-    </Title>
+    </HeaderWrapper>
   );
 }
 
