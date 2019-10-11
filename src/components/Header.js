@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Logo from "../icons/Logo.js";
 
-const HeaderWrapper = styled.header`
+const Title = styled.header`
   height: 80px;
   width: 375px;
   background-color: rgb(0, 0, 0);
@@ -33,13 +33,13 @@ const Menu = styled.img``;
 
 function Header() {
   return (
-    <HeaderWrapper>
+    <Title>
       <LogoContainer>
         <Logo />
       </LogoContainer>
       <Headline>EventListener</Headline>
       <Menu></Menu>
-    </HeaderWrapper>
+    </Title>
   );
 }
 
