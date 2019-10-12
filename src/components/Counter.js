@@ -6,17 +6,19 @@ const CounterBoxWrapper = styled.div`
   display: flex;
   flex-direction: column;
   background-color: rgba(34, 34, 34, 0.9);
+  margin: 10px 20px;
 `;
 
 const CounterDescription = styled.div`
   color: white;
+  margin-bottom: 6px;
 `;
 const CounterWrapper = styled.div`
   display: flex;
 `;
 
 const CounterArea1 = styled.div`
-  color: ${props => (props.marwin ? "green" : "red")};
+  color: ${props => (props.marwin ? "yellowgreen" : "red")};
   font-size: 50px;
   background-color: rgb(0, 0, 0);
   font-family: "Segment7Standard";
@@ -26,7 +28,7 @@ const CounterArea1 = styled.div`
 `;
 
 const CounterArea2 = styled.span`
-  color: ${props => (props.marwin ? "green" : "red")};
+  color: ${props => (props.marwin ? "yellowgreen" : "red")};
   font-size: 50px;
   font-family: "Segment7Standard";
   background-color: rgb(0, 0, 0);
@@ -36,6 +38,7 @@ const CounterArea2 = styled.span`
 
 const CounterUnit = styled.div`
   color: white;
+  margin-top: 8px;
 `;
 
 function Counter({ fontColor }) {

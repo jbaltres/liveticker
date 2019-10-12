@@ -6,6 +6,8 @@ const Textbox = styled.div`
   background-color: rgba(34, 34, 34, 1);
   flex-direction: column;
   height: 120px;
+  justify-content: flex-end;
+  margin-left: 35px;
 `;
 
 const SpecialName = styled.h2`
