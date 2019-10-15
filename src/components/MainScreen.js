@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import Counter from "./Counter";
-import Textarea from "./Textarea";
+import SectionContent from "./SectionContent";
 import styled from "styled-components";
 
 const Flexbox = styled.main`
@@ -20,11 +20,11 @@ function MainScreen() {
       <Header />
       <Flexbox>
         <Counter />
-        <Textarea />
+        <SectionContent />
       </Flexbox>
       <Flexbox>
         <Counter />
-        <Textarea />
+        <SectionContent />
       </Flexbox>
     </>
   );
