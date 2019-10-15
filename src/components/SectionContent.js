@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Textbox = styled.div`
+const TextWrapper = styled.div`
   display: flex;
   background-color: rgba(34, 34, 34, 1);
   flex-direction: column;
@@ -35,15 +35,15 @@ const SectionGPS = styled.div`
   color: white;
 `;
 
-function Textarea() {
+function SectionContent() {
   return (
-    <Textbox>
+    <TextWrapper>
       <SpecialName>Churros for 1€</SpecialName>
       <SpecialDescription>Every Churro 1€</SpecialDescription>
       <EntranceFee>Eintritt: 5€</EntranceFee>
       <SectionName>Denni´s Churros</SectionName>
       <SectionGPS>Am Stockweg 10, 49201 Köln</SectionGPS>
-    </Textbox>
+    </TextWrapper>
   );
 }
-export default Textarea;
+export default SectionContent;
