@@ -4,7 +4,7 @@ import Logo from "../icons/Logo.js";
 
 const Title = styled.header`
   height: 80px;
-  width: 375px;
+  width: 100vw;
   background-color: rgb(0, 0, 0);
   margin: 0;
   display: flex;
@@ -13,10 +13,8 @@ const Title = styled.header`
   border-image: linear-gradient(to right, rgba(37, 206, 197, 1), black) 50 15%;
 `;
 
-const Container = styled.div`
-  align-items: center;
-  margin: 15px 15px;
-  flex-direction: column;
+const StyledLogo = styled(Logo)`
+  margin: 15px;
 `;
 
 const Headline = styled.h1`
@@ -29,16 +27,13 @@ const Headline = styled.h1`
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serifw;
 `;
 
-const Menu = styled.img``;
-
 function Header() {
   return (
     <Title>
-      <Container>
+      <StyledLogo>
         <Logo />
-      </Container>
+      </StyledLogo>
       <Headline>EventListener</Headline>
-      <Menu></Menu>
     </Title>
   );
 }

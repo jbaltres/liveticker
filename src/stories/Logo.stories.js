@@ -5,4 +5,4 @@ export default {
   title: "Logo"
 };
 
-export const DefaultLogo = () => <Logo></Logo>;
+export const DefaultLogo = () => <Logo />;
