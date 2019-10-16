@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
@@ -27,29 +27,27 @@ const CounterArea1 = styled.div`
   margin-right: 5px;
 `;
 
-const CounterArea2 = styled.span`
-  color: ${props => (props.marwin ? "yellowgreen" : "red")};
-  font-size: 50px;
-  font-family: "Segment7Standard";
-  background-color: rgb(0, 0, 0);
-  width: fit-content;
-  padding: 6px;
-`;
-
 const CounterUnit = styled.div`
   color: white;
   margin-top: 8px;
 `;
 
 function Counter({ fontColor }) {
+  const [count, setCount] = useState(1020);
+
+  useInterval(() => {
+    if (count >= 1) {
+      setCount(count - 1);
+    }
+  }, 10);
+
   return (
     <CounterBoxWrapper>
       <CounterDescription>Nur noch:</CounterDescription>
       <CounterWrapper>
-        <CounterArea1 marwin={fontColor}>4</CounterArea1>
-        <CounterArea2 marwin={fontColor}>7</CounterArea2>
+        <CounterArea1 marwin={fontColor}>{count}</CounterArea1>
       </CounterWrapper>
-      <CounterUnit>Minutes</CounterUnit>
+      <CounterUnit>Seconds</CounterUnit>
     </CounterBoxWrapper>
   );
 }
@@ -59,3 +57,36 @@ export default Counter;
 CounterArea1.propTypes = {
   fontC: PropTypes.bool
 };
+
+//function Counter({ fontColor }) {
+// const [int, setI] = useState("");
+
+// const intervalId = setI(function() {
+//   let i = 10;
+//   let int = i - 1;
+//   int--;
+
+//   return int;
+// }, 1000);
+
+// clearInterval(setI);
+
+function useInterval(callback, delay) {
+  const savedCallback = useRef();
+
+  // Remember the latest callback.
+  useEffect(() => {
+    savedCallback.current = callback;
+  }, [callback]);
+
+  // Set up the interval.
+  useEffect(() => {
+    function tick() {
+      savedCallback.current();
+    }
+    if (delay !== null) {
+      let id = setInterval(tick, delay);
+      return () => clearInterval(id);
+    }
+  }, [delay]);
+}
