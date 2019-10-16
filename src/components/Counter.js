@@ -6,7 +6,8 @@ const CounterBoxWrapper = styled.div`
   display: flex;
   flex-direction: column;
   background-color: rgba(34, 34, 34, 0.9);
-  margin: 10px 20px;
+  margin: 10px 0px 10px 20px;
+  width: 120px;
 `;
 
 const CounterDescription = styled.div`
@@ -32,14 +33,14 @@ const CounterUnit = styled.div`
   margin-top: 8px;
 `;
 
-function Counter({ fontColor }) {
-  const [count, setCount] = useState(1020);
+function Counter({ fontColor, time }) {
+  const [count, setCount] = useState(time);
 
   useInterval(() => {
     if (count >= 1) {
       setCount(count - 1);
     }
-  }, 10);
+  }, 1000);
 
   return (
     <CounterBoxWrapper>

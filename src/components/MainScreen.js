@@ -3,6 +3,7 @@ import Header from "./Header";
 import Counter from "./Counter";
 import Textarea from "./Textarea";
 import styled from "styled-components";
+import { locations } from "../api/LocationsArray";
 
 const Flexbox = styled.main`
   display: flex;
@@ -18,14 +19,14 @@ function MainScreen() {
   return (
     <>
       <Header />
-      <Flexbox>
-        <Counter />
-        <Textarea />
-      </Flexbox>
-      <Flexbox>
-        <Counter />
-        <Textarea />
-      </Flexbox>
+      {locations.map(location => {
+        return (
+          <Flexbox>
+            <Counter time={location.time} />
+            <Textarea location={location} />
+          </Flexbox>
+        );
+      })}
     </>
   );
 }
