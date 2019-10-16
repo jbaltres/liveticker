@@ -1,3 +1,4 @@
+
 export const locations = [
   {
     headline: "Churros for 1€",
@@ -80,3 +81,6 @@ export const locations = [
     time: 60
   }
 ];
+
+
+export default locations;

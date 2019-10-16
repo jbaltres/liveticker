@@ -33,14 +33,18 @@ const CounterUnit = styled.div`
   margin-top: 8px;
 `;
 
+
 function Counter({ fontColor, time }) {
   const [count, setCount] = useState(time);
+
 
   useInterval(() => {
     if (count >= 1) {
       setCount(count - 1);
     }
+
   }, 1000);
+
 
   return (
     <CounterBoxWrapper>
