@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import Counter from "./Counter";
-import Textarea from "./Textarea";
+import SectionContent from "./SectionContent";
 import styled from "styled-components";
 import { locations } from "../api/LocationsArray";
 
@@ -19,6 +19,7 @@ function MainScreen() {
   return (
     <>
       <Header />
+<<<<<<< HEAD
       {locations.map(location => {
         return (
           <Flexbox>
@@ -27,6 +28,16 @@ function MainScreen() {
           </Flexbox>
         );
       })}
+=======
+      <Flexbox>
+        <Counter />
+        <SectionContent />
+      </Flexbox>
+      <Flexbox>
+        <Counter />
+        <SectionContent />
+      </Flexbox>
+>>>>>>> master
     </>
   );
 }

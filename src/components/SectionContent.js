@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Textbox = styled.div`
+const TextWrapper = styled.div`
   display: flex;
   background-color: rgba(34, 34, 34, 1);
   flex-direction: column;
@@ -38,6 +38,7 @@ const SectionGPS = styled.div`
   overflow-x: scroll;
 `;
 
+<<<<<<< HEAD:src/components/Textarea.js
 function Textarea({ location }) {
   return (
     <Textbox>
@@ -47,6 +48,17 @@ function Textarea({ location }) {
       <SectionName>{location.locationName}</SectionName>
       <SectionGPS>{location.adress}</SectionGPS>
     </Textbox>
+=======
+function SectionContent() {
+  return (
+    <TextWrapper>
+      <SpecialName>Churros for 1€</SpecialName>
+      <SpecialDescription>Every Churro 1€</SpecialDescription>
+      <EntranceFee>Eintritt: 5€</EntranceFee>
+      <SectionName>Denni´s Churros</SectionName>
+      <SectionGPS>Am Stockweg 10, 49201 Köln</SectionGPS>
+    </TextWrapper>
+>>>>>>> master:src/components/SectionContent.js
   );
 }
-export default Textarea;
+export default SectionContent;

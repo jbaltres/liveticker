@@ -1,8 +1,8 @@
 import React from "react";
-import Textarea from "../components/Textarea";
+import SectionContent from "../components/SectionContent";
 
 export default {
   title: "Textbox"
 };
 
-export const Textbox = () => <Textarea></Textarea>;
+export const Textbox = () => <SectionContent></SectionContent>;
