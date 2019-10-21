@@ -19,7 +19,7 @@ const CounterWrapper = styled.div`
 `;
 
 const CounterArea1 = styled.div`
-  color: ${props => (props.marwin ? "yellowgreen" : "red")};
+  color: ${props => (props.counterColor ? "yellowgreen" : "red")};
   font-size: 50px;
   background-color: rgb(0, 0, 0);
   font-family: "Segment7Standard";
@@ -33,24 +33,20 @@ const CounterUnit = styled.div`
   margin-top: 8px;
 `;
 
-
 function Counter({ fontColor, time }) {
   const [count, setCount] = useState(time);
-
 
   useInterval(() => {
     if (count >= 1) {
       setCount(count - 1);
     }
-
   }, 1000);
-
 
   return (
     <CounterBoxWrapper>
       <CounterDescription>Nur noch:</CounterDescription>
       <CounterWrapper>
-        <CounterArea1 marwin={fontColor}>{count}</CounterArea1>
+        <CounterArea1 counterColor={fontColor}>{count}</CounterArea1>
       </CounterWrapper>
       <CounterUnit>Seconds</CounterUnit>
     </CounterBoxWrapper>

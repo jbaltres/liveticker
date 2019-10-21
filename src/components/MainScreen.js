@@ -19,25 +19,14 @@ function MainScreen() {
   return (
     <>
       <Header />
-<<<<<<< HEAD
       {locations.map(location => {
         return (
           <Flexbox>
             <Counter time={location.time} />
-            <Textarea location={location} />
+            <SectionContent location={location} />
           </Flexbox>
         );
       })}
-=======
-      <Flexbox>
-        <Counter />
-        <SectionContent />
-      </Flexbox>
-      <Flexbox>
-        <Counter />
-        <SectionContent />
-      </Flexbox>
->>>>>>> master
     </>
   );
 }
