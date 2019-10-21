@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Logo from "../icons/Logo.js";
+import HamburgerIcon from "../icons/HamburgerIcon.js";
 
 const Title = styled.header`
   height: 80px;
@@ -27,13 +28,20 @@ const Headline = styled.h1`
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serifw;
 `;
 
+const MenuContainer = styled.div`
+  margin-top: 20px;
+  margin-left: 50px;
+  color: transparent;
+`;
+
 function Header() {
   return (
     <Title>
-      <StyledLogo>
-        <Logo />
-      </StyledLogo>
+      <StyledLogo></StyledLogo>
       <Headline>EventListener</Headline>
+      <MenuContainer>
+        <HamburgerIcon onClick="" />
+      </MenuContainer>
     </Title>
   );
 }
