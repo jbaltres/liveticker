@@ -38,27 +38,15 @@ const SectionGPS = styled.div`
   overflow-x: scroll;
 `;
 
-<<<<<<< HEAD:src/components/Textarea.js
-function Textarea({ location }) {
+function SectionContent({ location }) {
   return (
-    <Textbox>
+    <TextWrapper>
       <SpecialName>{location.headline}</SpecialName>
       <SpecialDescription>{location.subheadline}</SpecialDescription>
       <EntranceFee>{location.entranceFee} € Eintritt</EntranceFee>
       <SectionName>{location.locationName}</SectionName>
       <SectionGPS>{location.adress}</SectionGPS>
-    </Textbox>
-=======
-function SectionContent() {
-  return (
-    <TextWrapper>
-      <SpecialName>Churros for 1€</SpecialName>
-      <SpecialDescription>Every Churro 1€</SpecialDescription>
-      <EntranceFee>Eintritt: 5€</EntranceFee>
-      <SectionName>Denni´s Churros</SectionName>
-      <SectionGPS>Am Stockweg 10, 49201 Köln</SectionGPS>
     </TextWrapper>
->>>>>>> master:src/components/SectionContent.js
   );
 }
 export default SectionContent;
