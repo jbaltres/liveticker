@@ -5,4 +5,4 @@ export default {
   title: "Textbox"
 };
 
-export const Textbox = () => <SectionContent></SectionContent>;
+export const Textbox = () => <SectionContent />;

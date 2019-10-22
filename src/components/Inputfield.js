@@ -6,6 +6,7 @@ const Input = styled.input`
   margin: 10px 20px;
   border-radius: 10px;
   height: 24px;
+  text-align: center;
 
   ::placeholder {
     color: rgba(185, 166, 243);
