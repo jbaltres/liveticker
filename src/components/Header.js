@@ -43,8 +43,8 @@ const Headline = styled.h1`
 
 const BurgerContainer = styled.button`
   color: transparent;
-  transition: transform 15s ease-in-out;
-  transform: ${({ open }) => (open ? "rotate(-27000deg)" : "rotate(0)")};
+  transition: transform 1s ease-in-out;
+  transform: ${({ open }) => (open ? "rotate(-90deg)" : "rotate(0)")};
 
   cursor: pointer;
 `;

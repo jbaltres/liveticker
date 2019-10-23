@@ -17,11 +17,8 @@ const Flexbox = styled.main`
 `;
 
 function MainScreen() {
-  const [open, setOpen] = React.useState(false);
   return (
     <>
-      <Header open={open} setOpen={setOpen} />
-      <MenuContainer open={open} />
       {locations.map(location => {
         return (
           <Flexbox>
