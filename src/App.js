@@ -1,10 +1,9 @@
 import React from "react";
-import MainScreen from "./components/MainScreen";
 import GlobalStyles from "./GlobalStyles";
 import Countdown from "./pages/Countdown";
 import AddNewCountdown from "./pages/AddNewCountdown";
 import DayEvents from "./pages/DayEvents";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "./components/Header";
 import MenuContainer from "./components/MenuContainer";
 

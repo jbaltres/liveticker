@@ -1,10 +1,8 @@
 import React from "react";
-import Header from "./Header";
 import Counter from "./Counter";
 import SectionContent from "./SectionContent";
 import styled from "styled-components";
 import { locations } from "../api/LocationsArray";
-import MenuContainer from "./MenuContainer";
 
 const Flexbox = styled.main`
   display: flex;
