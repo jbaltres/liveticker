@@ -4,6 +4,7 @@ import Counter from "./Counter";
 import SectionContent from "./SectionContent";
 import styled from "styled-components";
 import { locations } from "../api/LocationsArray";
+import MenuContainer from "./MenuContainer";
 
 const Flexbox = styled.main`
   display: flex;
@@ -16,9 +17,11 @@ const Flexbox = styled.main`
 `;
 
 function MainScreen() {
+  const [open, setOpen] = React.useState(false);
   return (
     <>
-      <Header />
+      <Header open={open} setOpen={setOpen} />
+      <MenuContainer open={open} />
       {locations.map(location => {
         return (
           <Flexbox>

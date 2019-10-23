@@ -8,7 +8,7 @@ import Button from "./Button";
 const StyledParagraph = styled.p`
   justify-content: center;
   color: #f6f6f4;
-  margin: 0px 120px 20px;
+  margin: 0px;
   font-size: 20px;
 `;
 

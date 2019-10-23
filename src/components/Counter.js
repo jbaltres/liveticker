@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
@@ -36,11 +36,14 @@ const CounterUnit = styled.div`
 function Counter({ fontColor, time }) {
   const [count, setCount] = useState(time);
 
-  useInterval(() => {
-    if (count >= 1) {
-      setCount(count - 1);
-    }
-  }, 1000);
+  useEffect(() => {
+    let id = setTimeout(() => {
+      if (count >= 1) {
+        setCount(count - 1);
+      }
+    }, 300);
+    return () => clearTimeout(id);
+  }, [count]);
 
   return (
     <CounterBoxWrapper>
@@ -58,36 +61,3 @@ export default Counter;
 CounterArea1.propTypes = {
   fontC: PropTypes.bool
 };
-
-//function Counter({ fontColor }) {
-// const [int, setI] = useState("");
-
-// const intervalId = setI(function() {
-//   let i = 10;
-//   let int = i - 1;
-//   int--;
-
-//   return int;
-// }, 1000);
-
-// clearInterval(setI);
-
-function useInterval(callback, delay) {
-  const savedCallback = useRef();
-
-  // Remember the latest callback.
-  useEffect(() => {
-    savedCallback.current = callback;
-  }, [callback]);
-
-  // Set up the interval.
-  useEffect(() => {
-    function tick() {
-      savedCallback.current();
-    }
-    if (delay !== null) {
-      let id = setInterval(tick, delay);
-      return () => clearInterval(id);
-    }
-  }, [delay]);
-}
