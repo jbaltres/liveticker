@@ -14,34 +14,51 @@ const Title = styled.header`
   border-image: linear-gradient(to right, rgba(37, 206, 197, 1), black) 50 15%;
 `;
 
+const Margin = styled.div`
+  animation: turner 4s infinite linear;
+  @keyframes turner {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(360deg);
+    }
+  }
+`;
+
 const StyledLogo = styled(Logo)`
   margin: 15px;
 `;
 
 const Headline = styled.h1`
   font-size: 25px;
-  color: rgb(37, 206, 197);
-  margin-left: 40px;
+  color: rgb(0, 195, 238);
+
+  flex-grow: 1;
   padding-top: 8px;
   text-align: center;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serifw;
 `;
 
-const MenuContainer = styled.div`
-  margin-top: 20px;
-  margin-left: 50px;
+const BurgerContainer = styled.button`
   color: transparent;
+  transition: transform 15s ease-in-out;
+  transform: ${({ open }) => (open ? "rotate(-27000deg)" : "rotate(0)")};
+
+  cursor: pointer;
 `;
 
-function Header() {
+function Header({ open, setOpen }) {
   return (
     <Title>
-      <StyledLogo></StyledLogo>
+      <Margin open={open}>
+        <StyledLogo />
+      </Margin>
       <Headline>EventListener</Headline>
-      <MenuContainer>
-        <HamburgerIcon onClick="" />
-      </MenuContainer>
+      <BurgerContainer onClick={() => setOpen(!open)} open={open}>
+        <HamburgerIcon />
+      </BurgerContainer>
     </Title>
   );
 }
