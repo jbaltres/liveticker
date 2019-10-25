@@ -2,7 +2,8 @@ import React from "react";
 import Counter from "./Counter";
 import SectionContent from "./SectionContent";
 import styled from "styled-components";
-import { locations } from "../api/LocationsArray";
+import Axios from "axios";
+// import { locations } from "../api/LocationsArray";
 
 const Flexbox = styled.main`
   display: flex;
@@ -15,6 +16,19 @@ const Flexbox = styled.main`
 `;
 
 function MainScreen() {
+  const [locations, setLocation] = React.useState([]);
+
+  React.useEffect(() => {
+    Axios.get("http://localhost:3001/locations")
+      .then(response => {
+        console.log(response);
+        setLocation(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <>
       {locations.map(location => {
