@@ -17,9 +17,9 @@ export default function Logo({ className }) {
           x2="0.5"
           gradientUnits="objectBoundingBox"
         >
-          <stop offset="0" stop-color="#12c2e9" />
-          <stop offset="0.5" stop-color="#c471ed" />
-          <stop offset="1" stop-color="#f64f59" />
+          <stop offset="0" stopColor="#12c2e9" />
+          <stop offset="0.5" stopColor="#c471ed" />
+          <stop offset="1" stopColor="#f64f59" />
         </linearGradient>
       </defs>
       <path
