@@ -12,8 +12,24 @@ const Button = styled.button`
     props.close ? "rgb(37, 206, 198)" : "rgb(255, 58, 80)"};
   margin: 10px 0px;
 `;
-function ActionButton({ bgColor, children }) {
-  return <Button close={bgColor}>{children}</Button>;
+function ActionButton({ bgColor, children, handleClick }) {
+  return (
+    <Button close={bgColor} onClick={handleClick}>
+      {children}
+    </Button>
+  );
 }
 
 export default ActionButton;
+
+// function addToJsonDb(hallo, fuenf) {
+//   Axios.post("http://localhost:3001/locations", {
+//     title: hallo
+//   })
+//     .then(response => {
+//       console.log(response);
+//     })
+//     .catch(error => {
+//       console.log(error);
+//     });
+// }
