@@ -30,16 +30,22 @@ const Input = styled.input`
   }
 `;
 
+const FormWrapper = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
 function Inputfields() {
   return (
-    <>
+    <FormWrapper>
       <Input placeholder="Special Name" />
       <Input placeholder="Special Description" />
       <Input placeholder="Entrance Fee" />
       <Input placeholder="Location Name" />
       <Input placeholder="Adress" />
-      <Input placeholder="Password" />
-    </>
+      {/* <Input placeholder="Password" /> */}
+    </FormWrapper>
   );
 }
 

@@ -41,7 +41,7 @@ function Counter({ fontColor, time }) {
       if (count >= 1) {
         setCount(count - 1);
       }
-    }, 300);
+    }, 1000);
     return () => clearTimeout(id);
   }, [count]);
 

@@ -45,8 +45,8 @@ const BurgerContainer = styled.button`
   color: transparent;
   transition: transform 1s ease-in-out;
   transform: ${({ open }) => (open ? "rotate(-90deg)" : "rotate(0)")};
-
   cursor: pointer;
+  padding-right: 20px;
 `;
 
 function Header({ open, setOpen }) {
