@@ -1,7 +1,6 @@
-import React from "react";
 import styled from "styled-components";
 
-const TimeInput = styled.input`
+const TimeInputfield = styled.input`
   background-color: black;
   display: block;
   color: rgb(0, 195, 238);
@@ -25,9 +24,5 @@ const TimeInput = styled.input`
     border: rgb(185, 166, 243) solid 5px;
   }
 `;
-
-function TimeInputfield() {
-  return <TimeInput placeholder="99" maxLength="3" />;
-}
 
 export default TimeInputfield;
