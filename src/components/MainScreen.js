@@ -17,6 +17,7 @@ const Flexbox = styled.main`
 
 function MainScreen() {
   const [locations, setLocation] = React.useState([]);
+  const [newSection, NewSection] = React.useState(false);
 
   React.useEffect(() => {
     Axios.get("http://localhost:3001/locations")
@@ -33,10 +34,13 @@ function MainScreen() {
     <>
       {locations.map(location => {
         return (
-          <Flexbox>
-            <Counter time={location.time} />
-            <SectionContent location={location} />
-          </Flexbox>
+          <>
+            {newSection && <h1>LOL</h1>}
+            <Flexbox>
+              <Counter time={location.time} />
+              <SectionContent location={location} />
+            </Flexbox>
+          </>
         );
       })}
     </>
