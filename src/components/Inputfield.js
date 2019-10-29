@@ -36,14 +36,10 @@ const FormWrapper = styled.form`
   justify-content: center;
 `;
 
-function Inputfields() {
+function Inputfields({ ...props }) {
   return (
     <FormWrapper>
-      <Input placeholder="Special Name" />
-      <Input placeholder="Special Description" />
-      <Input placeholder="Entrance Fee" />
-      <Input placeholder="Location Name" />
-      <Input placeholder="Adress" />
+      <Input {...props} />
       {/* <Input placeholder="Password" /> */}
     </FormWrapper>
   );

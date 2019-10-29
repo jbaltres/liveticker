@@ -23,7 +23,11 @@ function Modal() {
   function addToJsonDb() {
     Axios.post("http://localhost:3001/locations", {
       time: timeValue,
-      inputff: "hi"
+      headline: formValue,
+      subheadline: formValue2,
+      entranceFee: formValue3,
+      locationName: formValue4,
+      adress: formValue5
     })
       .then(response => {
         console.log(response);
@@ -34,6 +38,11 @@ function Modal() {
   }
 
   const [timeValue, setTimeValue] = React.useState("");
+  const [formValue, setFormValue] = React.useState("");
+  const [formValue2, setFormValue2] = React.useState("");
+  const [formValue3, setFormValue3] = React.useState("");
+  const [formValue4, setFormValue4] = React.useState("");
+  const [formValue5, setFormValue5] = React.useState("");
 
   return (
     <ModalWrapper>
@@ -46,7 +55,36 @@ function Modal() {
           maxLength="3"
         />
         <StyledParagraph>Minutes</StyledParagraph>
-        <Inputfields />
+        <Inputfields
+          value={formValue}
+          onChange={event => setFormValue(event.target.value)}
+          placeholder="Special Name"
+          name="name"
+        />
+        <Inputfields
+          value={formValue2}
+          onChange={event => setFormValue2(event.target.value)}
+          placeholder="Special Name"
+          name="name"
+        />
+        <Inputfields
+          value={formValue3}
+          onChange={event => setFormValue3(event.target.value)}
+          placeholder="Special Name"
+          name="name"
+        />
+        <Inputfields
+          value={formValue4}
+          onChange={event => setFormValue4(event.target.value)}
+          placeholder="Special Name"
+          name="name"
+        />
+        <Inputfields
+          value={formValue5}
+          onChange={event => setFormValue5(event.target.value)}
+          placeholder="Special Name"
+          name="name"
+        />
         <ActionButton bgColor={true} handleClick={() => addToJsonDb()}>
           √
         </ActionButton>
@@ -56,3 +94,8 @@ function Modal() {
 }
 
 export default Modal;
+
+// function for key value pair objects
+// function getInputValue(key, value){
+//   setInput(input[key] = value);
+// }
