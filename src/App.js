@@ -6,6 +6,7 @@ import DayEvents from "./pages/DayEvents";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "./components/Header";
 import MenuContainer from "./components/MenuContainer";
+import StartScreen from "./pages/StartScreen";
 
 function App() {
   const [open, setOpen] = React.useState(false);
@@ -18,6 +19,7 @@ function App() {
       <Route path="/" exact component={Countdown} />
       <Route path="/new" component={AddNewCountdown} />
       <Route path="/dayevents" component={DayEvents} />
+      <Route path="/startscreen" component={StartScreen} />
     </Router>
   );
 }
