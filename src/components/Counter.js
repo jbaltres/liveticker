@@ -33,6 +33,11 @@ const CounterUnit = styled.div`
   margin-top: 8px;
 `;
 
+const style = {
+  color: "yellowgreen",
+  fontSize: 20
+};
+
 function Counter({ fontColor, time }) {
   const [count, setCount] = useState(time);
 
@@ -45,15 +50,43 @@ function Counter({ fontColor, time }) {
     return () => clearTimeout(id);
   }, [count]);
 
-  return (
-    <CounterBoxWrapper>
-      <CounterDescription>Nur noch:</CounterDescription>
-      <CounterWrapper>
-        <CounterArea1 counterColor={fontColor}>{count}</CounterArea1>
-      </CounterWrapper>
-      <CounterUnit>Seconds</CounterUnit>
-    </CounterBoxWrapper>
-  );
+  const style2 = {
+    color: `hsl(${count * 10}, 100%, 33%)`
+  };
+
+  if (count >= 10) {
+    return (
+      <CounterBoxWrapper>
+        <CounterDescription>Nur noch:</CounterDescription>
+        <CounterWrapper>
+          <CounterArea1 counterColor={true}>{count}</CounterArea1>
+        </CounterWrapper>
+        <CounterUnit>Seconds</CounterUnit>
+      </CounterBoxWrapper>
+    );
+  }
+  if (count < 10 && count >= 1) {
+    return (
+      <CounterBoxWrapper>
+        <CounterDescription>Nur noch:</CounterDescription>
+        <CounterWrapper>
+          <CounterArea1 style={style2}>{count}</CounterArea1>
+        </CounterWrapper>
+        <CounterUnit>Seconds</CounterUnit>
+      </CounterBoxWrapper>
+    );
+  }
+  if (count < 1) {
+    return (
+      <CounterBoxWrapper>
+        <CounterDescription>Nur noch:</CounterDescription>
+        <CounterWrapper>
+          <CounterArea1 counterColor={false}>0</CounterArea1>
+        </CounterWrapper>
+        <div style={style}>Dieses Angebot ist abgelaufen</div>
+      </CounterBoxWrapper>
+    );
+  }
 }
 
 export default Counter;

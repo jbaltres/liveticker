@@ -40,7 +40,6 @@ function Inputfields({ ...props }) {
   return (
     <FormWrapper>
       <Input {...props} />
-      {/* <Input placeholder="Password" /> */}
     </FormWrapper>
   );
 }

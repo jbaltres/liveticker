@@ -14,18 +14,6 @@ const Title = styled.header`
   border-image: linear-gradient(to right, rgba(37, 206, 197, 1), black) 50 15%;
 `;
 
-const Margin = styled.div`
-  animation: turner 4s infinite linear;
-  @keyframes turner {
-    from {
-      transform: rotateY(0deg);
-    }
-    to {
-      transform: rotateY(360deg);
-    }
-  }
-`;
-
 const StyledLogo = styled(Logo)`
   margin: 15px;
 `;
@@ -52,9 +40,7 @@ const BurgerContainer = styled.button`
 function Header({ open, setOpen }) {
   return (
     <Title>
-      <Margin open={open}>
-        <StyledLogo />
-      </Margin>
+      <StyledLogo />
       <Headline>EventListener</Headline>
       <BurgerContainer onClick={() => setOpen(!open)} open={open}>
         <HamburgerIcon />

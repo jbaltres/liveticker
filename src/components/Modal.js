@@ -43,6 +43,7 @@ function Modal() {
   const [formValue3, setFormValue3] = React.useState("");
   const [formValue4, setFormValue4] = React.useState("");
   const [formValue5, setFormValue5] = React.useState("");
+  const [formValue6, setFormValue6] = React.useState("");
 
   return (
     <ModalWrapper>
@@ -54,7 +55,7 @@ function Modal() {
           placeholder="99"
           maxLength="3"
         />
-        <StyledParagraph>Minutes</StyledParagraph>
+        <StyledParagraph>Seconds</StyledParagraph>
         <Inputfields
           value={formValue}
           onChange={event => setFormValue(event.target.value)}
@@ -64,27 +65,28 @@ function Modal() {
         <Inputfields
           value={formValue2}
           onChange={event => setFormValue2(event.target.value)}
-          placeholder="Special Name"
-          name="name"
+          placeholder="Special Description"
         />
         <Inputfields
           value={formValue3}
           onChange={event => setFormValue3(event.target.value)}
-          placeholder="Special Name"
-          name="name"
+          placeholder="Entrance Fee"
         />
         <Inputfields
           value={formValue4}
           onChange={event => setFormValue4(event.target.value)}
-          placeholder="Special Name"
-          name="name"
+          placeholder="Location Name"
         />
         <Inputfields
           value={formValue5}
           onChange={event => setFormValue5(event.target.value)}
-          placeholder="Special Name"
-          name="name"
+          placeholder="Adress"
         />
+        {/* <Inputfields
+          type="password"
+          onChange={event => setFormValue6(event.target.value)}
+          placeholder="Password"
+        /> */}
         <ActionButton bgColor={true} handleClick={() => addToJsonDb()}>
           √
         </ActionButton>
