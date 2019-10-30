@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Logo from "../icons/Logo.js";
+import { Redirect } from "react-router-dom";
 
 const StyledLogo = styled(Logo)`
   width: 300px;
@@ -31,11 +32,19 @@ const BodyStartpage = styled.div`
 `;
 
 export default function StartScreen() {
+  const [toMain, setToMain] = React.useState(false);
+  setTimeout(() => setToMain(true), 4200);
   return (
-    <BodyStartpage>
-      <Margin>
-        <StyledLogo />
-      </Margin>
-    </BodyStartpage>
+    <>
+      {toMain ? (
+        <Redirect to="/home" />
+      ) : (
+        <BodyStartpage>
+          <Margin>
+            <StyledLogo />
+          </Margin>
+        </BodyStartpage>
+      )}
+    </>
   );
 }

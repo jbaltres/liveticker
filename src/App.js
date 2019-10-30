@@ -16,10 +16,10 @@ function App() {
       <GlobalStyles />
       <Header open={open} setOpen={setOpen} />
       <MenuContainer open={open} />
-      <Route path="/" exact component={Countdown} />
+      <Route path="/home" component={Countdown} />
       <Route path="/new" component={AddNewCountdown} />
       <Route path="/dayevents" component={DayEvents} />
-      <Route path="/startscreen" component={StartScreen} />
+      <Route path="/" exact component={StartScreen} />
     </Router>
   );
 }
