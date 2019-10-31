@@ -5,6 +5,7 @@ import TimeInputfield from "./TimeInputfield";
 import InputWrapper from "./InputWrapper";
 import ActionButton from "./Button";
 import Axios from "axios";
+import { Link } from "react-router-dom";
 
 const ModalWrapper = styled.div`
   display: flex;
@@ -17,6 +18,10 @@ const StyledParagraph = styled.p`
   color: #f6f6f4;
   margin: 0px;
   font-size: 20px;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
 `;
 
 function Modal() {
@@ -87,9 +92,11 @@ function Modal() {
           onChange={event => setFormValue6(event.target.value)}
           placeholder="Password"
         /> */}
-        <ActionButton bgColor={true} handleClick={() => addToJsonDb()}>
-          √
-        </ActionButton>
+        <StyledLink to="/">
+          <ActionButton bgColor={true} handleClick={() => addToJsonDb()}>
+            √
+          </ActionButton>
+        </StyledLink>
       </InputWrapper>
     </ModalWrapper>
   );
