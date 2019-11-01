@@ -26,7 +26,12 @@ const Flexbox = styled.div`
 function DatePicker() {
   return (
     <Flexbox>
-      <Picker type="date" />
+      <Picker
+        type="date"
+        value="2020-07-22"
+        min="2019-12-22"
+        onChange={event => console.log(event.target.value)}
+      />
     </Flexbox>
   );
 }

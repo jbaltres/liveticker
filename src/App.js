@@ -9,17 +9,20 @@ import MenuContainer from "./components/MenuContainer";
 import StartScreen from "./pages/StartScreen";
 
 function App() {
-  const [open, setOpen] = React.useState(false);
+  const [showMenu, setShowMenu] = React.useState(false);
 
   return (
     <Router>
       <GlobalStyles />
-      <Header open={open} setOpen={setOpen} />
-      <MenuContainer open={open} />
+      <Header
+        showMenu={showMenu}
+        onMenuIconClick={() => setShowMenu(!showMenu)}
+      />
+      <MenuContainer open={showMenu} handleMenuLink={setShowMenu} />
+      <Route path="/" exact component={StartScreen} />
       <Route path="/home" component={Countdown} />
       <Route path="/new" component={AddNewCountdown} />
       <Route path="/dayevents" component={DayEvents} />
-      <Route path="/" exact component={StartScreen} />
     </Router>
   );
 }

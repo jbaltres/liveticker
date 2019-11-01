@@ -29,17 +29,17 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
-export default function MenuContainer({ open }) {
+export default function MenuContainer({ showMenu, handleMenuLink }) {
   return (
     <>
-      <MenuBox open={open}>
-        <StyledLink to="/">
+      <MenuBox showMenu={showMenu}>
+        <StyledLink onClick={() => handleMenuLink(!showMenu)} to="/home">
           <NavigationText>EventListener</NavigationText>
         </StyledLink>
-        <StyledLink to="/new">
+        <StyledLink onClick={() => handleMenuLink(!showMenu)} to="/new">
           <NavigationText>Add New Event</NavigationText>
         </StyledLink>
-        <StyledLink to="/dayevents">
+        <StyledLink onClick={() => handleMenuLink(!showMenu)} to="/dayevents">
           <NavigationText>Calendar</NavigationText>
         </StyledLink>
       </MenuBox>
