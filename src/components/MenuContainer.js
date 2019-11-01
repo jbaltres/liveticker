@@ -34,7 +34,7 @@ export default function MenuContainer({ open }) {
     <>
       <MenuBox open={open}>
         <StyledLink to="/">
-          <NavigationText active>EventListener</NavigationText>
+          <NavigationText>EventListener</NavigationText>
         </StyledLink>
         <StyledLink to="/new">
           <NavigationText>Add New Event</NavigationText>
