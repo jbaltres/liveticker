@@ -19,12 +19,15 @@ const CounterWrapper = styled.div`
 `;
 
 const CounterArea1 = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   color: ${props => (props.counterColor ? "yellowgreen" : "red")};
   font-size: 50px;
   background-color: rgb(0, 0, 0);
   font-family: "Segment7Standard";
-  width: fit-content;
-  padding: 6px;
+  width: 95px;
+  padding: 2px 10px 2px 2px;
   margin-right: 5px;
 `;
 
@@ -47,6 +50,7 @@ function Counter({ fontColor, time }) {
         setCount(count - 1);
       }
     }, 1000);
+
     return () => clearTimeout(id);
   }, [count]);
 

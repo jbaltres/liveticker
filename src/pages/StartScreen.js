@@ -1,11 +1,20 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Logo from "../icons/Logo.js";
 import { Redirect } from "react-router-dom";
 
 const StyledLogo = styled(Logo)`
   width: 300px;
   height: 300px;
+`;
+
+const turner = keyframes`
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
 `;
 
 const Margin = styled.div`
@@ -15,15 +24,7 @@ const Margin = styled.div`
   margin-left: auto;
   margin-right: auto;
   padding-top: 150px;
-  animation: turner 4s infinite linear;
-  @keyframes turner {
-    from {
-      transform: rotateY(0deg);
-    }
-    to {
-      transform: rotateY(360deg);
-    }
-  }
+  animation: ${turner} 4s infinite linear;
 `;
 
 const BodyStartpage = styled.div`
@@ -33,7 +34,15 @@ const BodyStartpage = styled.div`
 
 export default function StartScreen() {
   const [toMain, setToMain] = React.useState(false);
-  setTimeout(() => setToMain(true), 4200);
+
+  React.useEffect(() => {
+    const handle = setTimeout(() => setToMain(true), 4200);
+
+    return () => {
+      clearTimeout(handle);
+    };
+  }, []);
+
   return (
     <>
       {toMain ? (
