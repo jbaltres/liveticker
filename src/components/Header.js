@@ -37,12 +37,12 @@ const BurgerContainer = styled.button`
   padding-right: 20px;
 `;
 
-function Header({ open, setOpen }) {
+function Header({ showMenu, onMenuIconClick }) {
   return (
     <Title>
       <StyledLogo />
       <Headline>EventListener</Headline>
-      <BurgerContainer onClick={() => setOpen(!open)} open={open}>
+      <BurgerContainer onClick={onMenuIconClick} open={showMenu}>
         <HamburgerIcon />
       </BurgerContainer>
     </Title>
