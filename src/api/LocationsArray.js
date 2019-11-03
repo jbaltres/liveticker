@@ -1,4 +1,3 @@
-
 export const locations = [
   {
     headline: "Churros for 1€",
@@ -82,5 +81,12 @@ export const locations = [
   }
 ];
 
-
 export default locations;
+
+export function getLocation() {
+  return axios.get("/locations");
+}
+
+export function postLocation(location) {
+  return axios.post("/locations", location);
+}
