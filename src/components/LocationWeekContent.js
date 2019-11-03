@@ -41,7 +41,7 @@ function LocationWeekContent() {
   return (
     <>
       <WeekCardContainer></WeekCardContainer>
-      <LogoIMG></LogoIMG>
+      <LogoIMG />
       <WeekContentContainer></WeekContentContainer>
       <PartyName>Trash</PartyName>
       <PartyDescription>Wodka-0 18€</PartyDescription>

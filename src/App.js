@@ -18,7 +18,7 @@ function App() {
         showMenu={showMenu}
         onMenuIconClick={() => setShowMenu(!showMenu)}
       />
-      <MenuContainer open={showMenu} handleMenuLink={setShowMenu} />
+      <MenuContainer showMenu={showMenu} handleMenuLink={setShowMenu} />
       <Route path="/" exact component={StartScreen} />
       <Route path="/home" component={Countdown} />
       <Route path="/new" component={AddNewCountdown} />
