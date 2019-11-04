@@ -14,6 +14,7 @@ const MenuBox = styled.nav`
   right: 0;
   transition: transform 1s ease-in-out;
   transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
+  z-index: 200;
 `;
 
 const NavigationText = styled.li`
@@ -41,6 +42,12 @@ export default function MenuContainer({ showMenu, handleMenuLink }) {
         </StyledLink>
         <StyledLink onClick={() => handleMenuLink(!showMenu)} to="/dayevents">
           <NavigationText>Calendar</NavigationText>
+        </StyledLink>
+        <StyledLink
+          onClick={() => handleMenuLink(!showMenu)}
+          to="/dayeventoverlay"
+        >
+          <NavigationText>New Calendar Entry </NavigationText>
         </StyledLink>
       </MenuBox>
     </>
