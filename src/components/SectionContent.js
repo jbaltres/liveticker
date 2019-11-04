@@ -5,9 +5,9 @@ const TextWrapper = styled.div`
   display: flex;
   background-color: rgba(34, 34, 34, 1);
   flex-direction: column;
-  height: 150px;
   justify-content: center;
   max-width: 220px;
+  min-height: 170px;
 `;
 
 const SpecialName = styled.h2`
@@ -34,8 +34,8 @@ const SectionName = styled.div`
 
 const SectionGPS = styled.div`
   color: white;
-  min-width: 100px;
-  overflow-x: scroll;
+  max-width: 200px;
+  flex-wrap: wrap;
 `;
 
 function SectionContent({ location }) {

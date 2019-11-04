@@ -41,7 +41,7 @@ const style = {
   fontSize: 20
 };
 
-function Counter({ fontColor, time }) {
+function Counter({ time }) {
   const [count, setCount] = useState(time);
 
   useEffect(() => {

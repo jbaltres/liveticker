@@ -32,7 +32,7 @@ const StyledLink = styled(Link)`
 export default function MenuContainer({ showMenu, handleMenuLink }) {
   return (
     <>
-      <MenuBox showMenu={showMenu}>
+      <MenuBox open={showMenu}>
         <StyledLink onClick={() => handleMenuLink(!showMenu)} to="/home">
           <NavigationText>EventListener</NavigationText>
         </StyledLink>
