@@ -8,6 +8,8 @@ import Header from "./components/Header";
 import MenuContainer from "./components/MenuContainer";
 import StartScreen from "./pages/StartScreen";
 import DayEventOverlay from "./pages/DayEventOverlay";
+import LoadingScreen from "./pages/LoadingScreen";
+import LoadingScreenCalendar from "./pages/LoadingScreenCalendar";
 
 function App() {
   const [showMenu, setShowMenu] = React.useState(false);
@@ -25,6 +27,8 @@ function App() {
       <Route path="/new" component={AddNewCountdown} />
       <Route path="/dayevents" component={DayEvents} />
       <Route path="/dayeventoverlay" component={DayEventOverlay} />
+      <Route path="/add" component={LoadingScreen} />
+      <Route path="/addCalendarEntry" component={LoadingScreenCalendar} />
     </Router>
   );
 }
