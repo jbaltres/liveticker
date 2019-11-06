@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Picker = styled.input`
-  margin-top: 30px;
+  margin: 10px 0px;
   background-image: linear-gradient(
     rgba(75, 195, 230, 1),
     rgba(229, 72, 138, 1)

@@ -77,6 +77,9 @@ const FlipCardInner = styled.div`
 `;
 
 const FlipCardFront = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -85,6 +88,9 @@ const FlipCardFront = styled.div`
 `;
 
 const FlipCardBack = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -106,7 +112,7 @@ export default function DayEvents() {
       .then(response => {
         console.log(response);
         setWeekLocations(response.data);
-        // Warning();
+        Warning();
       })
       .catch(error => {
         console.log(error);

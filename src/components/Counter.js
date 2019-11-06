@@ -27,7 +27,7 @@ const CounterArea1 = styled.div`
   background-color: rgb(0, 0, 0);
   font-family: "Segment7Standard";
   width: 95px;
-  padding: 2px 10px 2px 2px;
+  padding: 9px 10px 2px 2px;
   margin-right: 5px;
 `;
 
@@ -55,28 +55,28 @@ function Counter({ time }) {
   }, [count]);
 
   const style2 = {
-    color: `hsl(${count * 10}, 100%, 33%)`
+    color: `hsl(${count * 2}, 100%, 50%)`
   };
 
-  if (count >= 10) {
+  if (count >= 60) {
     return (
       <CounterBoxWrapper>
         <CounterDescription>Nur noch:</CounterDescription>
         <CounterWrapper>
           <CounterArea1 counterColor={true}>{count}</CounterArea1>
         </CounterWrapper>
-        <CounterUnit>Seconds</CounterUnit>
+        <CounterUnit>Sekunden</CounterUnit>
       </CounterBoxWrapper>
     );
   }
-  if (count < 10 && count >= 1) {
+  if (count < 60 && count >= 1) {
     return (
       <CounterBoxWrapper>
         <CounterDescription>Nur noch:</CounterDescription>
         <CounterWrapper>
           <CounterArea1 style={style2}>{count}</CounterArea1>
         </CounterWrapper>
-        <CounterUnit>Seconds</CounterUnit>
+        <CounterUnit>Sekunden</CounterUnit>
       </CounterBoxWrapper>
     );
   }

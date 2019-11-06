@@ -10,17 +10,14 @@ const ModalWrapper = styled.div`
   margin-top: 30%;
 `;
 
-function Modal({ children, submitForm, pw }) {
+function Modal({ children, pw }) {
   return (
     <ModalWrapper>
       <InputWrapper>
-        <ActionButton>X</ActionButton>
-        {children}
         <Link to="/">
-          <ActionButton bgColor={true} onClick={submitForm}>
-            √
-          </ActionButton>
+          <ActionButton>X</ActionButton>
         </Link>
+        {children}
       </InputWrapper>
     </ModalWrapper>
   );
