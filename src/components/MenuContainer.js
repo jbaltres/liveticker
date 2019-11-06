@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 const MenuBox = styled.nav`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 350px;
   width: 70%;
   align-items: flex-end;
   padding: 15px;
-  background: linear-gradient(rgba(75, 195, 230, 0.7), rgba(229, 72, 138, 0.7));
+  background: linear-gradient(rgba(75, 195, 230, 1), rgba(229, 72, 138, 0.7));
   position: fixed;
   right: 0;
   transition: transform 1s ease-in-out;
