@@ -20,7 +20,7 @@ const Input = styled.input`
 
   :focus {
     border: none;
-    width: 80%;
+    height: 2.9em;
   }
 
   :hover {
