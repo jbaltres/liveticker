@@ -28,7 +28,7 @@ function DatePicker() {
     <Flexbox>
       <Picker
         type="date"
-        value="2020-07-22"
+        value="2019-11-13"
         min="2019-12-22"
         onChange={event => console.log(event.target.value)}
       />

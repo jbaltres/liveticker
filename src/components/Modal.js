@@ -14,7 +14,7 @@ function Modal({ children, pw }) {
   return (
     <ModalWrapper>
       <InputWrapper>
-        <Link to="/">
+        <Link to="/addCalendarEntry">
           <ActionButton>X</ActionButton>
         </Link>
         {children}

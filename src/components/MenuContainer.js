@@ -13,7 +13,7 @@ const MenuBox = styled.nav`
   position: fixed;
   right: 0;
   transition: transform 1s ease-in-out;
-  transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
+  transform: ${({ open }) => (open ? "translateX(0)" : "translateX(110%)")};
   z-index: 200;
 `;
 
