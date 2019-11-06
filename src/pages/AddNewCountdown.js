@@ -4,6 +4,8 @@ import TimeInputfield from "../components/TimeInputfield";
 import Inputfields from "../components/Inputfield";
 import styled from "styled-components";
 import axios from "axios";
+import ActionButton from "../components/Button";
+import { Link } from "react-router-dom";
 
 const StyledParagraph = styled.p`
   justify-content: center;
@@ -11,6 +13,12 @@ const StyledParagraph = styled.p`
   margin: 0px;
   font-size: 20px;
 `;
+
+// const ActionButtons = styled.button`
+//   width: 100px;
+//   height: 30px;
+//   font-size: 28px;
+// `;
 
 export default function AddNewCountdown() {
   const [timeValue, setTimeValue] = React.useState("");
@@ -40,7 +48,7 @@ export default function AddNewCountdown() {
   }
 
   return (
-    <Modal submitForm={addToJsonDb}>
+    <Modal pw={passwordValue}>
       <TimeInputfield
         value={timeValue}
         onChange={event => setTimeValue(event.target.value)}
@@ -80,6 +88,11 @@ export default function AddNewCountdown() {
         onChange={event => setPasswordValue(event.target.value)}
         pw={passwordValue}
       />
+      <Link to="/">
+        <ActionButton bgColor={true} currywurst={addToJsonDb}>
+          √
+        </ActionButton>
+      </Link>
     </Modal>
   );
 }
