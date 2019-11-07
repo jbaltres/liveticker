@@ -37,7 +37,8 @@ export default function AddNewCountdown() {
         subheadline: descriptionValue,
         entranceFee: entranceFeeValue,
         locationName: locationNameValue,
-        adress: adressValue
+        adress: adressValue,
+        timestamp: Date.now()
       })
       .then(response => {
         console.log(response);
@@ -45,6 +46,18 @@ export default function AddNewCountdown() {
       .catch(error => {
         console.log(error);
       });
+  }
+
+  function handleAcceptClick() {
+    if (passwordValue !== "1234") {
+      alert("Please type in the Password");
+      return;
+    }
+    if (entranceFeeValue.length < 0) {
+      alert("Please enter a header value");
+      return;
+    }
+    addToJsonDb();
   }
 
   return (
@@ -89,7 +102,11 @@ export default function AddNewCountdown() {
         pw={passwordValue}
       />
       <Link to="/">
-        <ActionButton bgColor={true} currywurst={addToJsonDb}>
+        <ActionButton
+          bgColor={true}
+          currywurst={addToJsonDb}
+          acceptClick={handleAcceptClick}
+        >
           √
         </ActionButton>
       </Link>

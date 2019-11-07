@@ -23,7 +23,7 @@ const CounterArea1 = styled.div`
   justify-content: flex-end;
   align-items: center;
   color: ${props => (props.counterColor ? "yellowgreen" : "red")};
-  font-size: 50px;
+  font-size: 45px;
   background-color: rgb(0, 0, 0);
   font-family: "Segment7Standard";
   width: 95px;
@@ -37,12 +37,16 @@ const CounterUnit = styled.div`
 `;
 
 const style = {
-  color: "yellowgreen",
-  fontSize: 20
+  color: "rgb(251, 72, 123)",
+  fontSize: 23
 };
 
-function Counter({ time }) {
-  const [count, setCount] = useState(time);
+function Counter({ location }) {
+  const now = Date.now();
+  const endTime = location.timestamp + location.time * 1000;
+  const sum = endTime - now;
+  console.log("sum is" + sum);
+  const [count, setCount] = useState(sum / 1000);
 
   useEffect(() => {
     let id = setTimeout(() => {
@@ -63,7 +67,7 @@ function Counter({ time }) {
       <CounterBoxWrapper>
         <CounterDescription>Nur noch:</CounterDescription>
         <CounterWrapper>
-          <CounterArea1 counterColor={true}>{count}</CounterArea1>
+          <CounterArea1 counterColor={true}>{parseInt(count)}</CounterArea1>
         </CounterWrapper>
         <CounterUnit>Sekunden</CounterUnit>
       </CounterBoxWrapper>
@@ -74,23 +78,23 @@ function Counter({ time }) {
       <CounterBoxWrapper>
         <CounterDescription>Nur noch:</CounterDescription>
         <CounterWrapper>
-          <CounterArea1 style={style2}>{count}</CounterArea1>
+          <CounterArea1 style={style2}>{parseInt(count)}</CounterArea1>
         </CounterWrapper>
         <CounterUnit>Sekunden</CounterUnit>
       </CounterBoxWrapper>
     );
   }
-  if (count < 1) {
+
+  if (count < 1)
     return (
       <CounterBoxWrapper>
-        <CounterDescription>Nur noch:</CounterDescription>
+        <CounterDescription>Nur :</CounterDescription>
         <CounterWrapper>
           <CounterArea1 counterColor={false}>0</CounterArea1>
         </CounterWrapper>
-        <div style={style}>Dieses Angebot ist abgelaufen</div>
+        <div style={style}> Sekunden </div>
       </CounterBoxWrapper>
     );
-  }
 }
 
 export default Counter;

@@ -38,15 +38,46 @@ const SectionGPS = styled.div`
   flex-wrap: wrap;
 `;
 
+const style = {
+  fontSize: 30
+};
+
 function SectionContent({ location }) {
-  return (
-    <TextWrapper>
-      <SpecialName>{location.headline}</SpecialName>
-      <SpecialDescription>{location.subheadline}</SpecialDescription>
-      <EntranceFee>{location.entranceFee} € Eintritt</EntranceFee>
-      <SectionName>{location.locationName}</SectionName>
-      <SectionGPS>{location.adress}</SectionGPS>
-    </TextWrapper>
-  );
+  const [count, setCount] = React.useState(location.time);
+
+  React.useEffect(() => {
+    let id = setTimeout(() => {
+      if (count >= 1) {
+        setCount(count - 1);
+      }
+    }, 1000);
+
+    return () => clearTimeout(id);
+  }, [count]);
+  const now = Date.now();
+  const offerTime = location.timestamp + parseInt(location.time) * 1000;
+  if (offerTime <= now) {
+    return (
+      <TextWrapper>
+        <SpecialName>{location.headline}</SpecialName>
+        <SpecialDescription></SpecialDescription>
+        <EntranceFee style={style}>Dieses Event ist abegelaufen</EntranceFee>
+        <SectionName></SectionName>
+        <SectionGPS></SectionGPS>
+      </TextWrapper>
+    );
+  } else {
+    return (
+      count >= 1 && (
+        <TextWrapper>
+          <SpecialName>{location.headline}</SpecialName>
+          <SpecialDescription>{location.subheadline}</SpecialDescription>
+          <EntranceFee>{location.entranceFee} € Eintritt</EntranceFee>
+          <SectionName>{location.locationName}</SectionName>
+          <SectionGPS>{location.adress}</SectionGPS>
+        </TextWrapper>
+      )
+    );
+  }
 }
 export default SectionContent;
