@@ -10,7 +10,7 @@ const ModalWrapper = styled.div`
   margin-top: 30%;
 `;
 
-function Modal({ children, pw }) {
+function Modal({ children }) {
   return (
     <ModalWrapper>
       <InputWrapper>
