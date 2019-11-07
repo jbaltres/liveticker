@@ -1,40 +1,9 @@
 import React from "react";
-import DatePicker from "../components/DatePicker";
 import styled from "styled-components";
 import axios from "axios";
 import Modal from "../components/Modal";
 import Inputfields from "../components/Inputfield";
-
-const LogoIMG = styled.img``;
-
-const WeekContentContainer = styled.div`
-  display: flex;
-`;
-
-const PartyName = styled.h2`
-  color: rgb(250, 72, 123);
-  margin: 0px;
-`;
-
-const PartyDescription = styled.p`
-  color: rgb(250, 72, 123);
-  margin: 0px;
-`;
-
-const Musik = styled.p`
-  color: rgb(229, 90, 189);
-  margin: 0px;
-`;
-
-const Location = styled.p`
-  color: rgb(186, 116, 243);
-  margin: 0px;
-`;
-
-const Adress = styled.p`
-  color: rgb(0, 195, 238);
-  margin: 0px;
-`;
+import { Link } from "react-router-dom";
 
 const WeekCardContainer = styled.main`
   display: flex;
@@ -58,28 +27,25 @@ const Button = styled.button`
   width: 100px;
   height: 30px;
   font-size: 28px;
+  margin: 20px;
 `;
 
-export default function DayEvents() {
-  const [weekLocations, setWeekLocations] = React.useState([]);
+const InputWrapperSpace = styled.div`
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(rgba(75, 195, 230, 0.5), rgba(229, 72, 138, 0.5));
+  border-radius: 15px;
+`;
+
+export default function DayEvent() {
   const [imgSrc, setImgSrc] = React.useState("");
   const [partyName, setPartyName] = React.useState("");
   const [partyDescription, setPartyDescription] = React.useState("");
   const [music, setMusic] = React.useState("");
   const [locationname, setLocationname] = React.useState("");
   const [adress, setAddress] = React.useState("");
-
-  React.useEffect(() => {
-    axios
-      .get("/weeklocations")
-      .then(response => {
-        console.log(response);
-        setWeekLocations(response.data);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }, []);
 
   function addToJsonDb() {
     axios
@@ -101,7 +67,6 @@ export default function DayEvents() {
   }
   return (
     <>
-      <DatePicker />
       <ModalWrapper>
         <Modal>
           <Inputfields
@@ -134,22 +99,18 @@ export default function DayEvents() {
             onChange={event => setAddress(event.target.value)}
             placeholder="Address"
           />
+          <Link to="/addCalendarEntry">
+            <Button onClick={addToJsonDb}>
+              <span role="img" aria-label="HI">
+                👌🏾
+              </span>
+            </Button>
+          </Link>
         </Modal>
-        <Button onClick={addToJsonDb}>🖕🏻</Button>
       </ModalWrapper>
-      {weekLocations.map(location => {
-        return (
-          <WeekCardContainer>
-            <LogoIMG src={location.locationlogo} />
-            <WeekContentContainer></WeekContentContainer>
-            <PartyName>{location.partyname}</PartyName>
-            <PartyDescription>{location.partydescription}</PartyDescription>
-            <Musik>{location.actor}</Musik>
-            <Location>{location.locationname}</Location>
-            <Adress>{location.adress}</Adress>
-          </WeekCardContainer>
-        );
-      })}
+      <WeekCardContainer>
+        <InputWrapperSpace />
+      </WeekCardContainer>
     </>
   );
 }

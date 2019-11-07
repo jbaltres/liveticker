@@ -32,10 +32,10 @@ function MainScreen() {
 
   return (
     <>
-      {locations.map(location => {
+      {locations.reverse().map(location => {
         return (
           <Flexbox>
-            <Counter time={location.time} />
+            <Counter time={location.time} location={location} />
             <SectionContent location={location} />
           </Flexbox>
         );
