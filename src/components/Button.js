@@ -12,9 +12,9 @@ const Button = styled.button`
     props.close ? "rgb(37, 206, 198)" : "rgb(255, 58, 80)"};
   margin: 10px 0px;
 `;
-function ActionButton({ bgColor, children, currywurst, pw }) {
+function ActionButton({ bgColor, children, currywurst, acceptClick }) {
   return (
-    <Button close={bgColor} onClick={currywurst} validate={pw}>
+    <Button close={bgColor} onClick={(currywurst, acceptClick)}>
       {children}
     </Button>
   );
