@@ -5,18 +5,25 @@ import axios from "axios";
 import Inputfields from "../components/Inputfield";
 import { Link } from "react-router-dom";
 
-const WeekCardContainer = styled.main`
+const CalendarWrapper = styled.div`
   display: flex;
-  background-color: rgba(34, 34, 34, 1);
+  flex-direction: column;
+
   width: 100vw;
-  padding: 20px;
+`;
+
+const WeekCardContainer = styled.section`
+  display: flex;
+  padding: 10px;
   border-width: 2px;
   border-style: solid;
   border-image: linear-gradient(to right, rgba(37, 206, 197, 1), black) 50 15%;
+  margin: 3px;
 `;
 
 const LogoIMG = styled.img`
-  width: 50%;
+  max-height: 70px;
+
   justify-content: center;
   align-items: center;
   margin-right: 15px;
@@ -25,6 +32,7 @@ const LogoIMG = styled.img`
 const WeekContentContainer = styled.div`
   display: flex;
   flex-direction: column;
+  width: 70%;
 `;
 
 const ImageContainer = styled.div`
@@ -35,11 +43,13 @@ const ImageContainer = styled.div`
 const PartyName = styled.h2`
   color: rgb(250, 72, 123);
   margin: 0px;
+  display: flex;
 `;
 
 const PartyDescription = styled.p`
   color: rgb(250, 72, 123);
   margin: 0px;
+  display: flex;
 `;
 
 const Musik = styled.p`
@@ -54,14 +64,13 @@ const Location = styled.p`
 
 const Adress = styled.p`
   color: rgb(0, 195, 238);
-
   margin: 0px;
 `;
 
 const FlipCard = styled.div`
   background-color: transparent;
-  width: 100vw;
-  height: 200px;
+  width: 100%;
+  height: 80px;
   perspective: 1000px;
 `;
 
@@ -70,7 +79,7 @@ const FlipCardInner = styled.div`
   width: 100%;
   height: 100%;
   text-align: center;
-  transition: transform 0.8s;
+  transition: transform 1.5s;
   transform-style: preserve-3d;
 
   :hover {
@@ -136,7 +145,6 @@ export default function DayEvents() {
   const [weekLocations, setWeekLocations] = React.useState([]);
   const [dateValue, setDateValue] = React.useState("");
   const [locationName, setLocationName] = React.useState("");
-  // const [searchResults, setSearchResults] = React.useState([]);
 
   const handleLocationChange = event => {
     setLocationName(event.target.value);
@@ -164,11 +172,11 @@ export default function DayEvents() {
   return (
     <>
       {/* <DatePicker />
-      <Inputfields
-        placeholder="Date"
-        value={dateValue}
-        onChange={event => setDateValue(event.target.value)}
-      /> */}
+    <Inputfields
+      placeholder="Date"
+      value={dateValue}
+      onChange={event => setDateValue(event.target.value)}
+    /> */}
       <Inputfields
         placeholder="Locationname"
         value={locationName}
@@ -179,214 +187,36 @@ export default function DayEvents() {
           <StyledLink to="/dayeventoverlay">Neues Event</StyledLink>
         </OverlayButton>
       </ButtonWrapper>
-      {results.map(location => {
-        return (
-          <WeekCardContainer>
-            <FlipCard>
-              <FlipCardInner>
-                <FlipCardFront>
-                  <ImageContainer>
-                    <LogoIMG src={location.locationlogo} />
+      <CalendarWrapper>
+        {results.map(location => {
+          return (
+            <WeekCardContainer>
+              <FlipCard>
+                <FlipCardInner>
+                  <FlipCardFront>
+                    <ImageContainer>
+                      <LogoIMG src={location.locationlogo} />
+                    </ImageContainer>
                     <WeekContentContainer>
                       <PartyName>{location.partyname}</PartyName>
                       <PartyDescription>
                         {location.partydescription}
                       </PartyDescription>
                     </WeekContentContainer>
-                  </ImageContainer>
-                </FlipCardFront>
-                <FlipCardBack>
-                  <WeekContentContainer>
-                    <Musik>{location.actor}</Musik>
-                    <Location>{location.locationname}</Location>
-                    <Adress>{location.adress}</Adress>
-                  </WeekContentContainer>
-                </FlipCardBack>
-              </FlipCardInner>
-            </FlipCard>
-          </WeekCardContainer>
-        );
-      })}
+                  </FlipCardFront>
+                  <FlipCardBack>
+                    <WeekContentContainer>
+                      <Musik>{location.actor}</Musik>
+                      <Location>{location.locationname}</Location>
+                      <Adress>{location.adress}</Adress>
+                    </WeekContentContainer>
+                  </FlipCardBack>
+                </FlipCardInner>
+              </FlipCard>
+            </WeekCardContainer>
+          );
+        })}
+      </CalendarWrapper>
     </>
   );
 }
-
-//   "headline": "Churros für 1€",
-//   "subheadline": "Eintritt: 5€",
-//   "locationName": "Frankie´s Churros",
-//   "entranceFee": "0",
-//   "adress": "Gertrudenstrasse 27, 50667 Köln",
-//   "time": 155
-// },
-// {
-//   "headline": "50 ct Party",
-//   "subheadline": "Jedes Getränk 50ct",
-//   "entranceFee": 15,
-//   "locationName": "Klappsmühle",
-//   "adress": "Am Hohenzollernring 39, 50672 Köln",
-//   "time": 35
-// },
-// {
-//   "headline": "3-4-1",
-//   "subheadline": "Zahle 1, Trinke 3",
-//   "entranceFee": 10,
-//   "locationName": "B1",
-//   "adress": "La-roche-Sur-Yon-Straße 444, 51647 Gummersbach",
-//   "time": 12
-// },
-// {
-//   "headline": "1/2 Preis",
-//   "subheadline": "Alle Jumbo´s zum halben Preis",
-//   "locationName": "Sausalitos",
-//   "entranceFee": "0",
-//   "adress": "Hohenzollernring 50, 50672 Köln",
-//   "time": 48
-// },
-// {
-//   "headline": "Ladies Night",
-//   "subheadline": "Alle Ladies Sekt 4 free",
-//   "entranceFee": 6,
-//   "locationName": "Diamonds",
-//   "adress": "Hohenzollernring 1201, 49201 Köln",
-//   "time": 55
-// },
-// {
-//   "headline": "All you can Eat",
-//   "subheadline": "Buffet 7,90€",
-//   "entranceFee": "18€",
-//   "locationName": "Bim Kong Lun",
-//   "adress": "Am Stockweg 10, 51645 Gummersbach",
-//   "time": 33
-// },
-// {
-//   "headline": "2$ Party ",
-//   "subheadline": "Every Longdrink for 2$",
-//   "entranceFee": "",
-//   "locationName": "Beachcomber",
-//   "adress": "4332 Mission Blvd, 90219 San Diego",
-//   "time": 23
-// },
-// {
-//   "headline": "Taco Tuesday",
-//   "subheadline": "30% on your Bill and free Taco´s",
-//   "entranceFee": "10",
-//   "locationName": "Denni´s Churros",
-//   "adress": "43 Mission Blvd, 90219 San Diego",
-//   "time": 77
-// },
-// {
-//   "headline": "Table 250€",
-//   "subheadline": "1 Tisch + 0,7 L Smirnoff",
-//   "entranceFee": "",
-//   "locationName": "Denni´s Churros",
-//   "adress": "Kaschemm 2, 12345 Köln",
-//   "time": 60
-// },
-// {
-//   "headline": "Daily Wrap 5€",
-//   "subheadline": "Today Every Wrap Take away 5€",
-//   "entranceFee": "",
-//   "locationName": "Rich ´n´ Greens",
-//   "adress": "Kyffhäuserstraße 7, 50969 Köln",
-//   "time": 60
-// },
-// {
-//   "time": "88",
-//   "headline": "Spaces Around",
-//   "id": 163
-// },
-// {
-//   "time": "",
-//   "headline": "Hallo",
-//   "id": 164
-// },
-// {
-//   "time": "44",
-//   "headline": "Lukas",
-//   "id": 165
-// },
-// {
-//   "time": "12",
-//   "headline": "Jonas",
-//   "id": 166
-// },
-// {
-//   "time": "1",
-//   "headline": "Christina",
-//   "id": 167
-// },
-// {
-//   "time": "46",
-//   "headline": "Julian",
-//   "id": 168
-// },
-// {
-//   "time": "33",
-//   "headline": "Lena",
-//   "id": 169
-// },
-// {
-//   "time": "22",
-//   "headline": "Lena2",
-//   "id": 170
-// },
-// {
-//   "time": "29",
-//   "headline": "José",
-//   "id": 171
-// },
-// {
-//   "time": "17",
-//   "headline": "Philipp",
-//   "id": 172
-// },
-// {
-//   "time": "88",
-//   "headline": "",
-//   "id": 173
-// },
-// {
-//   "time": "22",
-//   "headline": "Lukas",
-//   "subheadline": "danke",
-//   "entranceFee": "für ",
-//   "locationName": "deine",
-//   "adress": "Hilfe",
-//   "id": 174
-// },
-// {
-//   "time": "124",
-//   "headline": "Der längste Name der Welt mit der längsten PLZ der Welt",
-//   "subheadline": "Der längste Name der Welt mit der längsten PLZ der Welt",
-//   "entranceFee": "Der längste Name der Welt mit der längsten PLZ der Welt",
-//   "locationName": "Der längste Name der Welt mit der längsten PLZ der Welt",
-//   "adress": "Der längste Name der Welt mit der längsten PLZ der Welt",
-//   "id": 181
-// },
-// {
-//   "time": "124",
-//   "headline": "Der längste Name der Welt mit der längsten PLZ der Welt",
-//   "subheadline": "Der längste Name der Welt mit der längsten PLZ der Welt",
-//   "entranceFee": "Der längste Name der Welt mit der längsten PLZ der Welt",
-//   "locationName": "Der längste Name der Welt mit der längsten PLZ der Welt",
-//   "adress": "Der längste Name der Welt mit der längsten PLZ der Welt",
-//   "id": 181
-// },
-// {
-//   "time": "",
-//   "headline": "burritos für n euro",
-//   "subheadline": "hammer essen",
-//   "entranceFee": "1000",
-//   "locationName": "solingen",
-//   "adress": "solingen sttrasse",
-//   "id": 192
-// },
-// {
-//   "time": "33",
-//   "headline": "Das letzte Mal",
-//   "subheadline": "Bier für alle",
-//   "entranceFee": "1",
-//   "locationName": "Spaces",
-//   "adress": "Gertrudenstraße 35, 50999 Köln",
-//   "id": 193
-// },
