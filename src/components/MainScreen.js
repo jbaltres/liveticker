@@ -5,9 +5,8 @@ import styled from "styled-components";
 import axios from "axios";
 // import { locations } from "../api/LocationsArray";
 
-const Flexbox = styled.main`
+const Flexbox = styled.section`
   display: flex;
-  background-color: rgba(34, 34, 34, 1);
   width: 100vw;
   margin: 0;
   border-width: 2px;
@@ -15,6 +14,9 @@ const Flexbox = styled.main`
   border-image: linear-gradient(to right, rgba(37, 206, 197, 1), black) 50 15%;
 `;
 
+const MainContainer = styled.div`
+  overflow: scroll;
+`;
 function MainScreen() {
   const [locations, setLocation] = React.useState([]);
 
@@ -31,7 +33,7 @@ function MainScreen() {
   }, []);
 
   return (
-    <>
+    <MainContainer>
       {locations.reverse().map(location => {
         return (
           <Flexbox>
@@ -40,7 +42,7 @@ function MainScreen() {
           </Flexbox>
         );
       })}
-    </>
+    </MainContainer>
   );
 }
 

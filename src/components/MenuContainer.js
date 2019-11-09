@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const MenuBox = styled.nav`
   display: flex;
   flex-direction: column;
-  height: 350px;
+  height: 100vh;
   width: 70%;
   align-items: flex-end;
   padding: 15px;
@@ -15,6 +15,7 @@ const MenuBox = styled.nav`
   transition: transform 1s ease-in-out;
   transform: ${({ open }) => (open ? "translateX(0)" : "translateX(110%)")};
   z-index: 200;
+  margin-top: 80px;
 `;
 
 const NavigationText = styled.li`

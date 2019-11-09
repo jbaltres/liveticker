@@ -7,14 +7,14 @@ import { Link } from "react-router-dom";
 const ModalWrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 30%;
+  margin-top: ${props => (props.height ? "40%" : "10%")};
 `;
 
-function Modal({ children }) {
+function Modal({ children, height }) {
   return (
-    <ModalWrapper>
+    <ModalWrapper height={height}>
       <InputWrapper>
-        <Link to="/addCalendarEntry">
+        <Link to="/add">
           <ActionButton>X</ActionButton>
         </Link>
         {children}
