@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 const CounterBoxWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: rgba(34, 34, 34, 0.9);
+
   margin: 10px 0px 10px 20px;
   width: 120px;
 `;
@@ -88,7 +88,7 @@ function Counter({ location }) {
   if (count < 1)
     return (
       <CounterBoxWrapper>
-        <CounterDescription>Nur :</CounterDescription>
+        <CounterDescription>Nur noch:</CounterDescription>
         <CounterWrapper>
           <CounterArea1 counterColor={false}>0</CounterArea1>
         </CounterWrapper>

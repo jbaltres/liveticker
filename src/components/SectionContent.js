@@ -3,11 +3,10 @@ import styled from "styled-components";
 
 const TextWrapper = styled.div`
   display: flex;
-  background-color: rgba(34, 34, 34, 1);
+
   flex-direction: column;
   justify-content: center;
   max-width: 220px;
-  min-height: 170px;
 `;
 
 const SpecialName = styled.h2`
@@ -39,7 +38,7 @@ const SectionGPS = styled.div`
 `;
 
 const style = {
-  fontSize: 30
+  fontSize: 20
 };
 
 function SectionContent({ location }) {

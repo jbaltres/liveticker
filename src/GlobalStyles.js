@@ -11,6 +11,6 @@ body {
   font-size: 16px;
   margin: 0;
   font-family: 'Roboto', sans-serif;
-  background-color: rgb(34, 34, 34)
+  background-color: rgba(0, 0, 0, 0.9)
 }
 `;

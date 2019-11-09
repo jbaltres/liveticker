@@ -17,6 +17,11 @@ const turner = keyframes`
   }
 `;
 
+const sizer = keyframes`
+  from {font-size: 45px;}
+  to {font-size: 30px;}
+`;
+
 const Margin = styled.div`
   display: flex;
   justify-content: center;
@@ -30,6 +35,26 @@ const Margin = styled.div`
 const BodyStartpage = styled.div`
   background-color: black;
   height: 100vh;
+`;
+
+const HeaderHider = styled.div`
+  width: 100%;
+  height: 65px;
+  background-color: black;
+  position: absolute;
+  z-index: 10000;
+`;
+
+const Headline = styled.span`
+  display: flex;
+  justify-content: center;
+  font-style: bold;
+  margin-top: 24px;
+  color: rgb(0, 195, 238);
+  font-size: 45px;
+  text-align: center;
+  animation: ${sizer} 4.3s infinite linear;
+  font-family: Arial, Helvetica, sans-serif;
 `;
 
 export default function StartScreen() {
@@ -48,11 +73,16 @@ export default function StartScreen() {
       {toMain ? (
         <Redirect to="/home" />
       ) : (
-        <BodyStartpage>
-          <Margin>
-            <StyledLogo />
-          </Margin>
-        </BodyStartpage>
+        <>
+          <HeaderHider>
+            <Headline>Eventlistener</Headline>
+          </HeaderHider>
+          <BodyStartpage>
+            <Margin>
+              <StyledLogo />
+            </Margin>
+          </BodyStartpage>
+        </>
       )}
     </>
   );

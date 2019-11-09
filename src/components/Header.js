@@ -12,6 +12,7 @@ const Title = styled.header`
   border-width: 2px;
   border-style: solid;
   border-image: linear-gradient(to right, rgba(37, 206, 197, 1), black) 50 15%;
+  z-index: 400;
 `;
 
 const StyledLogo = styled(Logo)`
@@ -21,12 +22,11 @@ const StyledLogo = styled(Logo)`
 const Headline = styled.h1`
   font-size: 25px;
   color: rgb(0, 195, 238);
-
   flex-grow: 1;
   padding-top: 8px;
   text-align: center;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serifw;
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 `;
 
 const BurgerContainer = styled.button`

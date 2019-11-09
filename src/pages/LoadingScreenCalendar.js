@@ -92,6 +92,45 @@ const BodyStartpage = styled.div`
   height: 100vh;
 `;
 
+const BurritoAppWrapper = styled.div`
+  margin-top: 50px;
+`;
+
+const SpanWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const Span1 = styled.span`
+  margin-right: 15px;
+  font-style: bold;
+  font-size: 2em;
+  color: rgb(251, 72, 123);
+  /* animation: ${turner} 4s infinite linear; */
+`;
+
+const Span2 = styled.span`
+  margin-right: 15px;
+  font-style: bold;
+  font-size: 2em;
+  color: rgb(229, 90, 189);
+`;
+
+const Span3 = styled.span`
+  margin-right: 0px;
+  font-style: bold;
+  font-size: 2em;
+  color: rgb(185, 116, 243);
+`;
+
+const Span4 = styled.div`
+  margin: 0px;
+  font-style: bold;
+  font-size: 2em;
+  color: rgb(0, 195, 238);
+  animation: ${flicker} 55s infinite linear;
+`;
+
 export default function LoadingCalendar() {
   const [toMain, setToMain] = React.useState(false);
 
@@ -114,6 +153,14 @@ export default function LoadingCalendar() {
               <StyledLogo />
             </Margin>
           </FlickerDiv>
+          <SpanWrapper>
+            <BurritoAppWrapper>
+              <Span1>Powered</Span1>
+              <Span2>by</Span2>
+              <Span3>PatchFox</Span3>
+              <Span4>@pdxphilippmac</Span4>
+            </BurritoAppWrapper>
+          </SpanWrapper>
         </BodyStartpage>
       )}
     </>
