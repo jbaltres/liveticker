@@ -5,7 +5,7 @@ import Inputfields from "../components/Inputfield";
 import styled from "styled-components";
 import axios from "axios";
 import ActionButton from "../components/Button";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const StyledParagraph = styled.p`
   justify-content: center;
@@ -48,20 +48,28 @@ export default function AddNewCountdown() {
       });
   }
 
+  let history = useHistory();
+
+  function routeTo() {
+    history.push("/");
+  }
+
   function handleAcceptClick() {
     if (passwordValue !== "1234") {
       alert("Please type in the Password");
       return;
     }
-    if (entranceFeeValue.length < 0) {
-      alert("Please enter a header value");
-      return;
+    if (timeValue.length < 1) {
+      alert("Please enter a timer value");
     }
-    addToJsonDb();
+    if (passwordValue === "1234" && timeValue.length > 0) {
+      addToJsonDb();
+      routeTo();
+    }
   }
 
   return (
-    <Modal pw={passwordValue}>
+    <Modal height={false} pw={passwordValue}>
       <TimeInputfield
         value={timeValue}
         onChange={event => setTimeValue(event.target.value)}
@@ -101,15 +109,14 @@ export default function AddNewCountdown() {
         onChange={event => setPasswordValue(event.target.value)}
         pw={passwordValue}
       />
-      <Link to="/">
-        <ActionButton
-          bgColor={true}
-          currywurst={addToJsonDb}
-          acceptClick={handleAcceptClick}
-        >
-          √
-        </ActionButton>
-      </Link>
+
+      <ActionButton
+        bgColor={true}
+        currywurst={addToJsonDb}
+        acceptClick={handleAcceptClick}
+      >
+        √
+      </ActionButton>
     </Modal>
   );
 }
