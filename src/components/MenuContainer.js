@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const MenuBox = styled.nav`
   display: flex;
@@ -18,7 +18,15 @@ const MenuBox = styled.nav`
   margin-top: 80px;
 `;
 
-const NavigationText = styled.li`
+const activeClassName = "active";
+const StyledNavLink = styled(NavLink).attrs({
+  activeClassName: activeClassName
+})`
+  &.${activeClassName} {
+    color: rgb(251, 72, 123);
+    text-shadow: white 2px 4px 2px;
+  }
+  text-decoration: none;
   font-size: 20px;
   font-weight: bold;
   color: rgba(0, 0, 0, 0.7);
@@ -27,29 +35,31 @@ const NavigationText = styled.li`
   margin-top: 25px;
 `;
 
-const StyledLink = styled(Link)`
-  text-decoration: none;
-`;
-
 export default function MenuContainer({ showMenu, handleMenuLink }) {
   return (
     <>
       <MenuBox open={showMenu}>
-        <StyledLink onClick={() => handleMenuLink(!showMenu)} to="/home">
-          <NavigationText>EventListener</NavigationText>
-        </StyledLink>
-        <StyledLink onClick={() => handleMenuLink(!showMenu)} to="/new">
-          <NavigationText>Add New Event</NavigationText>
-        </StyledLink>
-        <StyledLink onClick={() => handleMenuLink(!showMenu)} to="/dayevents">
-          <NavigationText>Calendar</NavigationText>
-        </StyledLink>
-        <StyledLink
+        <StyledNavLink
           onClick={() => handleMenuLink(!showMenu)}
-          to="/dayeventoverlay"
+          activeClassName="chosen"
+          to="/home"
         >
-          <NavigationText>New Calendar Entry </NavigationText>
-        </StyledLink>
+          EventListener
+        </StyledNavLink>
+        <StyledNavLink
+          onClick={() => handleMenuLink(!showMenu)}
+          activeClassName="chosen"
+          to="/new"
+        >
+          Neues Event
+        </StyledNavLink>
+        <StyledNavLink
+          onClick={() => handleMenuLink(!showMenu)}
+          activeClassName="chosen"
+          to="/dayevents"
+        >
+          Kalender
+        </StyledNavLink>
       </MenuBox>
     </>
   );

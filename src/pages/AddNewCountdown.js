@@ -10,8 +10,22 @@ import { useHistory } from "react-router-dom";
 const StyledParagraph = styled.p`
   justify-content: center;
   color: #f6f6f4;
-  margin: 0px;
+  margin: 10px 0px 30px 0px;
   font-size: 20px;
+`;
+
+const StyledAcceptButton = styled.div`
+  position: absolute;
+  right: -22px;
+  bottom: -40px;
+`;
+
+const ButtonContainer = styled.div`
+  position: relative;
+`;
+
+const ModalSpacer = styled.div`
+  height: 20px;
 `;
 
 // const ActionButtons = styled.button`
@@ -51,16 +65,37 @@ export default function AddNewCountdown() {
   let history = useHistory();
 
   function routeTo() {
-    history.push("/");
+    history.push("/add");
   }
 
   function handleAcceptClick() {
     if (passwordValue !== "1234") {
-      alert("Please type in the Password");
+      alert("Bitte geben Sie das richtige Passwort ein");
       return;
     }
     if (timeValue.length < 1) {
-      alert("Please enter a timer value");
+      alert("Bitte geben Sie eine Eventdauer ein");
+      return;
+    }
+    if (headerValue.length < 1) {
+      alert("Bitte geben Sie einen Eventnamen ein");
+      return;
+    }
+    if (descriptionValue.length < 1) {
+      alert("Beschreiben Sie bitte ihr Event");
+      return;
+    }
+    if (entranceFeeValue.length < 1) {
+      alert("Wie hoch ist der Eintritt? Bitte Wert angeben");
+      return;
+    }
+    if (locationNameValue.length < 1) {
+      alert("Wie heißt ihre Location?");
+      return;
+    }
+    if (adressValue.length < 1) {
+      alert("Bitte geben Sie eine Adresse ein");
+      return;
     }
     if (passwordValue === "1234" && timeValue.length > 0) {
       addToJsonDb();
@@ -70,13 +105,7 @@ export default function AddNewCountdown() {
 
   return (
     <Modal height={false} pw={passwordValue}>
-      <TimeInputfield
-        value={timeValue}
-        onChange={event => setTimeValue(event.target.value)}
-        placeholder="99"
-        maxLength="3"
-      />
-      <StyledParagraph>Seconds</StyledParagraph>
+      <ModalSpacer />
       <Inputfields
         value={headerValue}
         onChange={event => setHeaderValue(event.target.value)}
@@ -85,12 +114,13 @@ export default function AddNewCountdown() {
       <Inputfields
         value={descriptionValue}
         onChange={event => setDescriptionValue(event.target.value)}
-        placeholder="Special Description"
+        placeholder="Special Beschreibung"
       />
       <Inputfields
+        type="number"
         value={entranceFeeValue}
         onChange={event => setEntranceFeeValue(event.target.value)}
-        placeholder="Entrance Fee"
+        placeholder="Eintrittspreis"
       />
       <Inputfields
         value={locationNameValue}
@@ -100,23 +130,33 @@ export default function AddNewCountdown() {
       <Inputfields
         value={adressValue}
         onChange={event => setAdressValue(event.target.value)}
-        placeholder="Address"
+        placeholder="Addresse"
       />
       <Inputfields
         type="password"
-        placeholder="Password"
+        placeholder="Passwort"
         value={passwordValue}
         onChange={event => setPasswordValue(event.target.value)}
         pw={passwordValue}
       />
-
-      <ActionButton
-        bgColor={true}
-        currywurst={addToJsonDb}
-        acceptClick={handleAcceptClick}
-      >
-        √
-      </ActionButton>
+      <TimeInputfield
+        value={timeValue}
+        onChange={event => setTimeValue(event.target.value)}
+        placeholder="99"
+        maxLength="3"
+      />
+      <StyledParagraph>Sekunden</StyledParagraph>
+      <ButtonContainer>
+        <StyledAcceptButton>
+          <ActionButton
+            bgColor={true}
+            currywurst={addToJsonDb}
+            acceptClick={handleAcceptClick}
+          >
+            √
+          </ActionButton>
+        </StyledAcceptButton>
+      </ButtonContainer>
     </Modal>
   );
 }

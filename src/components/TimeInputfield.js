@@ -11,7 +11,7 @@ const TimeInputfield = styled.input`
   padding: 15px;
   font-family: "Segment7Standard";
   justify-content: center;
-  margin-bottom: 2px;
+  margin: 10px 2px 2px 2px;
 
   ::placeholder {
     color: rgba(152, 152, 152, 0.4);

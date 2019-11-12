@@ -11,8 +11,8 @@ const CounterBoxWrapper = styled.div`
 `;
 
 const CounterDescription = styled.div`
-  color: white;
-  margin-bottom: 6px;
+  color: rgba(256, 256, 256, 0.8);
+  margin: 6px;
 `;
 const CounterWrapper = styled.div`
   display: flex;
@@ -31,21 +31,11 @@ const CounterArea1 = styled.div`
   margin-right: 5px;
 `;
 
-const CounterUnit = styled.div`
-  color: white;
-  margin-top: 8px;
-`;
-
-const style = {
-  color: "rgb(251, 72, 123)",
-  fontSize: 23
-};
-
 function Counter({ location }) {
   const now = Date.now();
   const endTime = location.timestamp + location.time * 1000;
   const sum = endTime - now;
-  console.log("sum is" + sum);
+
   const [count, setCount] = useState(sum / 1000);
 
   useEffect(() => {
@@ -69,7 +59,7 @@ function Counter({ location }) {
         <CounterWrapper>
           <CounterArea1 counterColor={true}>{parseInt(count)}</CounterArea1>
         </CounterWrapper>
-        <CounterUnit>Sekunden</CounterUnit>
+        <CounterDescription>Sekunden</CounterDescription>
       </CounterBoxWrapper>
     );
   }
@@ -80,7 +70,7 @@ function Counter({ location }) {
         <CounterWrapper>
           <CounterArea1 style={style2}>{parseInt(count)}</CounterArea1>
         </CounterWrapper>
-        <CounterUnit>Sekunden</CounterUnit>
+        <CounterDescription>Sekunden</CounterDescription>
       </CounterBoxWrapper>
     );
   }
@@ -92,7 +82,7 @@ function Counter({ location }) {
         <CounterWrapper>
           <CounterArea1 counterColor={false}>0</CounterArea1>
         </CounterWrapper>
-        <div style={style}> Sekunden </div>
+        <CounterDescription> Sekunden </CounterDescription>
       </CounterBoxWrapper>
     );
 }

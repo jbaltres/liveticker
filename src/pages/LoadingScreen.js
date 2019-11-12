@@ -76,7 +76,7 @@ export default function LoadingScreen() {
   const [toMain, setToMain] = React.useState(false);
 
   React.useEffect(() => {
-    const handle = setTimeout(() => setToMain(true), 5200);
+    const handle = setTimeout(() => setToMain(true), 4200);
 
     return () => {
       clearTimeout(handle);

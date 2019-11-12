@@ -135,7 +135,7 @@ export default function LoadingCalendar() {
   const [toMain, setToMain] = React.useState(false);
 
   React.useEffect(() => {
-    const handle = setTimeout(() => setToMain(true), 4200);
+    const handle = setTimeout(() => setToMain(true), 4700);
 
     return () => {
       clearTimeout(handle);
