@@ -248,7 +248,7 @@ export default function DayEvents() {
       <CalendarWrapper>
         {results.map(location => {
           return (
-            <WeekCardContainer>
+            <WeekCardContainer key={location.id}>
               <FlipCard>
                 <FlipCardInner>
                   <FlipCardFront>

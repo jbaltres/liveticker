@@ -25,7 +25,7 @@ function MainScreen() {
       .get("/locations")
       .then(response => {
         console.log(response);
-        setLocation(response.data);
+        setLocation(response.data.reverse());
       })
       .catch(error => {
         console.log(error);
@@ -34,9 +34,9 @@ function MainScreen() {
 
   return (
     <MainContainer>
-      {locations.reverse().map(location => {
+      {locations.map(location => {
         return (
-          <Flexbox>
+          <Flexbox key={location.id}>
             <Counter time={location.time} location={location} />
             <SectionContent location={location} />
           </Flexbox>

@@ -24,7 +24,7 @@ const StyledNavLink = styled(NavLink).attrs({
 })`
   &.${activeClassName} {
     color: rgb(251, 72, 123);
-    text-shadow: white 2px 4px 2px;
+    /* text-shadow: white 2px 4px 2px; */
   }
   text-decoration: none;
   font-size: 20px;
