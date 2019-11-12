@@ -15,6 +15,12 @@ To run Eventlistener, clone the repository and install the dependencies:
 npm install
 ```
 
+install JSON-Webserver
+
+```
+ `npm install -g json-server`
+```
+
 ### `npm start`
 
 starts the app.
