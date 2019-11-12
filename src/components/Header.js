@@ -11,7 +11,7 @@ const Title = styled.header`
   background-color: rgb(0, 0, 0);
   margin: 0;
   border-width: 2px;
-  border-style: dashed;
+  border-style: solid;
   border-image: linear-gradient(to right, rgba(37, 206, 197, 1), black) 50 15%;
   z-index: 400;
 `;

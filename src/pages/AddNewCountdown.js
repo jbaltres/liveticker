@@ -28,12 +28,6 @@ const ModalSpacer = styled.div`
   height: 20px;
 `;
 
-// const ActionButtons = styled.button`
-//   width: 100px;
-//   height: 30px;
-//   font-size: 28px;
-// `;
-
 export default function AddNewCountdown() {
   const [timeValue, setTimeValue] = React.useState("");
   const [headerValue, setHeaderValue] = React.useState("");
