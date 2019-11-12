@@ -1,6 +1,5 @@
 import React from "react";
-import DatePicker from "../components/DatePicker";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import axios from "axios";
 import Inputfields from "../components/Inputfield";
 import { Link } from "react-router-dom";
@@ -23,7 +22,7 @@ const WeekCardContainer = styled.section`
 
 const LogoIMG = styled.img`
   max-height: 70px;
-
+  width: 70px;
   justify-content: center;
   align-items: center;
   margin-right: 15px;
@@ -32,6 +31,14 @@ const LogoIMG = styled.img`
 const WeekContentContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  width: 70%;
+`;
+
+const ContentContainerBack = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 70%;
 `;
 
@@ -43,28 +50,29 @@ const ImageContainer = styled.div`
 const PartyName = styled.h2`
   color: rgb(250, 72, 123);
   margin: 0px;
-  display: flex;
 `;
 
 const PartyDescription = styled.p`
   color: rgb(250, 72, 123);
   margin: 0px;
-  display: flex;
 `;
 
 const Musik = styled.p`
   color: rgb(229, 90, 189);
   margin: 0px;
+  align-self: center;
 `;
 
 const Location = styled.p`
   color: rgb(186, 116, 243);
   margin: 0px;
+  align-self: center;
 `;
 
 const Adress = styled.p`
   color: rgb(0, 195, 238);
   margin: 0px;
+  align-self: center;
 `;
 
 const FlipCard = styled.div`
@@ -101,7 +109,6 @@ const FlipCardFront = styled.div`
 const FlipCardBack = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -117,7 +124,7 @@ const OverlayButton = styled.div`
     rgba(229, 72, 138, 1)
   );
   color: white;
-  margin-bottom: 10px;
+  margin: 10px 0px;
   border: none;
   border-radius: 15px;
   font-size: 18px;
@@ -137,17 +144,59 @@ const StyledLink = styled(Link)`
   text-align: center;
 `;
 
-function Warning() {
-  alert("Tap on Card to show more Details!");
+const InputfieldContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 5px 0px;
+`;
+
+const DateContainer = styled.div`
+  margin-top: 10px;
+  color: rgb(0, 195, 238);
+`;
+
+const FilterStyle = styled.div`
+  width: -webkit-fill-available;
+  text-align: center;
+  margin: 5px auto 5px auto;
+  font-size: 20px;
+  font-style: bold;
+  color: rgb(0, 195, 238);
+`;
+
+const flicker = keyframes`
+  0% {
+    opacity:0.1;
+    text-shadow: 0px 0px 29px rgba(229, 90, 189, 1);
+  }
+  
+  50% {
+    opacity:0.3;
+    text-shadow: 0px 0px 29px rgba(229, 90, 189, 0.5);
+  }
+  
+  100% {
+    opacity:.9;
+    text-shadow: 0px 0px 29px rgba(229, 90, 189, 0.1);
+  }
 }
+`;
+
+const Span3 = styled.span`
+  width: -webkit-fill-available;
+  text-align: center;
+  animation: ${flicker} 5s linear;
+  font-size: 16px;
+  font-style: italic;
+  color: rgb(185, 116, 243);
+`;
 
 export default function DayEvents() {
   const [weekLocations, setWeekLocations] = React.useState([]);
   const [dateValue, setDateValue] = React.useState("");
-  const [locationName, setLocationName] = React.useState("");
 
   const handleLocationChange = event => {
-    setLocationName(event.target.value);
+    setDateValue(event.target.value);
   };
 
   React.useEffect(() => {
@@ -156,37 +205,46 @@ export default function DayEvents() {
       .then(response => {
         console.log(response);
         setWeekLocations(response.data);
-        if (locationName === "") {
-          Warning();
+
+        if (dateValue === "") {
         }
       })
       .catch(error => {
         console.log(error);
       });
-  }, [locationName]);
+  }, [dateValue]);
 
   const results = weekLocations.filter(location =>
-    location.locationname.toLowerCase().includes(locationName.toLowerCase())
+    location.date.toLowerCase().includes(dateValue.toLowerCase())
   );
 
   return (
     <>
-      {/* <DatePicker />
-    <Inputfields
-      placeholder="Date"
-      value={dateValue}
-      onChange={event => setDateValue(event.target.value)}
-    /> */}
-      <Inputfields
-        placeholder="Locationname"
-        value={locationName}
-        onChange={handleLocationChange}
-      />
-      <ButtonWrapper>
-        <OverlayButton>
-          <StyledLink to="/dayeventoverlay">Neues Event</StyledLink>
-        </OverlayButton>
-      </ButtonWrapper>
+      <FilterStyle>
+        <details>
+          <summary>
+            FILTER
+            <div>
+              <Span3>Tap or Hover on a Card to show more Details</Span3>
+            </div>
+          </summary>
+
+          <InputfieldContainer>
+            <Inputfields
+              size={true}
+              placeholder="dd-mm-yyyy "
+              value={dateValue}
+              onChange={handleLocationChange}
+            />
+          </InputfieldContainer>
+          <ButtonWrapper>
+            <OverlayButton>
+              <StyledLink to="/dayeventoverlay">Neues Event</StyledLink>
+            </OverlayButton>
+          </ButtonWrapper>
+        </details>
+      </FilterStyle>
+
       <CalendarWrapper>
         {results.map(location => {
           return (
@@ -202,14 +260,15 @@ export default function DayEvents() {
                       <PartyDescription>
                         {location.partydescription}
                       </PartyDescription>
+                      <DateContainer>Datum: {location.date}</DateContainer>
                     </WeekContentContainer>
                   </FlipCardFront>
                   <FlipCardBack>
-                    <WeekContentContainer>
+                    <ContentContainerBack>
                       <Musik>{location.actor}</Musik>
                       <Location>{location.locationname}</Location>
                       <Adress>{location.adress}</Adress>
-                    </WeekContentContainer>
+                    </ContentContainerBack>
                   </FlipCardBack>
                 </FlipCardInner>
               </FlipCard>

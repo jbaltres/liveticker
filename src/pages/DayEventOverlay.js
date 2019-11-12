@@ -3,12 +3,12 @@ import styled from "styled-components";
 import axios from "axios";
 import Modal from "../components/Modal";
 import Inputfields from "../components/Inputfield";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import ActionButton from "../components/Button";
 
 const WeekCardContainer = styled.main`
   display: flex;
   flex-direction: column;
-  background-color: rgba(34, 34, 34, 1);
   width: 100vw;
   padding: 20px;
   border-width: 2px;
@@ -24,10 +24,15 @@ const ModalWrapper = styled.div`
 `;
 
 const Button = styled.button`
-  width: 100px;
-  height: 30px;
-  font-size: 28px;
-  margin: 20px;
+  color: white;
+  border: none;
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  border-radius: 50px;
+  background-color: rgb(37, 206, 198);
+  margin: 20px 0px 20px;
+  font-size: 20px;
 `;
 
 const InputWrapperSpace = styled.div`
@@ -39,6 +44,11 @@ const InputWrapperSpace = styled.div`
   border-radius: 15px;
 `;
 
+const DateInputfieldWrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
+
 export default function DayEvent() {
   const [imgSrc, setImgSrc] = React.useState("");
   const [partyName, setPartyName] = React.useState("");
@@ -46,6 +56,10 @@ export default function DayEvent() {
   const [music, setMusic] = React.useState("");
   const [locationname, setLocationname] = React.useState("");
   const [adress, setAddress] = React.useState("");
+  const [passwordValue, setPasswordValue] = React.useState("");
+  const [day, setDay] = React.useState("");
+  const [month, setMonth] = React.useState("");
+  const [year, setYear] = React.useState("");
 
   function addToJsonDb() {
     axios
@@ -56,7 +70,7 @@ export default function DayEvent() {
         actor: music,
         locationname: locationname,
         adress: adress,
-        date: "20-11-2019"
+        date: day + "." + month + "." + year
       })
       .then(response => {
         console.log(response);
@@ -65,14 +79,72 @@ export default function DayEvent() {
         console.log(error);
       });
   }
+
+  let history = useHistory();
+
+  function routeTo() {
+    history.push("/addCalendarEntry");
+  }
+
+  function handleAcceptClick() {
+    if (passwordValue !== "1234") {
+      alert("Please type in the Password");
+      return;
+    }
+
+    if (imgSrc.length < 1) {
+      alert("Mit einem Bild sieht Ihr Event schöner aus");
+      return;
+    }
+    if (partyName.length < 1) {
+      alert("Bitte geben Sie einen Eventnamen ein");
+      return;
+    }
+    if (partyDescription.length < 1) {
+      alert("Beschreiben Sie Ihr Event kurz");
+      return;
+    }
+    if (music.length < 1) {
+      alert("Geben Sie eine Musikrichtung oder einen Dj an");
+      return;
+    }
+    if (locationname.length < 1) {
+      alert("Wie heißt ihre Location?");
+      return;
+    }
+    if (adress.length < 1) {
+      alert("Bitte geben Sie eine Adresse ein");
+      return;
+    }
+    if (day.length < 2) {
+      alert("Bitte geben sie den Tag in `DD` an");
+      return;
+    }
+    if (month.length < 2) {
+      alert("Bitte geben sie den Monat in `MM` an");
+      return;
+    }
+    if (year.length < 4) {
+      alert("Bitte geben sie das Jahr in `JJJJ` an");
+      return;
+    }
+
+    addToJsonDb();
+    routeTo();
+  }
+
   return (
     <>
       <ModalWrapper>
-        <Modal>
+        <Modal height>
+          <Link to="/addCalendarEntry">
+            <ActionButton>X</ActionButton>
+          </Link>
           <Inputfields
+            autoFocus
             value={imgSrc}
             onChange={event => setImgSrc(event.target.value)}
-            placeholder="Img Src"
+            placeholder="Bild-URL"
           />
           <Inputfields
             value={partyName}
@@ -82,30 +154,55 @@ export default function DayEvent() {
           <Inputfields
             value={partyDescription}
             onChange={event => setPartyDescription(event.target.value)}
-            placeholder="Description"
+            placeholder="Beschreibung"
           />
           <Inputfields
             value={music}
             onChange={event => setMusic(event.target.value)}
-            placeholder=" Music"
+            placeholder="DJ oder Musikrichtung"
           />
           <Inputfields
             value={locationname}
             onChange={event => setLocationname(event.target.value)}
             placeholder="Locationname"
           />
+
           <Inputfields
             value={adress}
             onChange={event => setAddress(event.target.value)}
-            placeholder="Address"
+            placeholder="Addresse"
           />
-          <Link to="/addCalendarEntry">
-            <Button onClick={addToJsonDb}>
-              <span role="img" aria-label="HI">
-                👌🏾
-              </span>
-            </Button>
-          </Link>
+          <DateInputfieldWrapper>
+            <Inputfields
+              value={day}
+              onChange={event => setDay(event.target.value)}
+              placeholder="Tag"
+              maxLength="2"
+            />
+            <Inputfields
+              value={month}
+              onChange={event => setMonth(event.target.value)}
+              placeholder="Monat"
+              maxLength="2"
+            />
+            <Inputfields
+              value={year}
+              onChange={event => setYear(event.target.value)}
+              placeholder="Jahr"
+              maxLength="4"
+            />
+          </DateInputfieldWrapper>
+          <Inputfields
+            type="password"
+            placeholder="Passwort"
+            value={passwordValue}
+            onChange={event => setPasswordValue(event.target.value)}
+            pw={passwordValue}
+          />
+
+          <Button bgColor={true} onClick={handleAcceptClick}>
+            √
+          </Button>
         </Modal>
       </ModalWrapper>
       <WeekCardContainer>

@@ -2,12 +2,13 @@ import React from "react";
 import styled from "styled-components";
 
 const Input = styled.input`
+  font-size: 16px;
   border: none;
   margin: 10px 20px;
   border-radius: 10px;
-  height: 24px;
+  height: 30px;
   text-align: center;
-  padding: 0.5em 4em;
+  width: 73%;
 
   :hover::placeholder {
     color: white;
@@ -16,31 +17,31 @@ const Input = styled.input`
   ::placeholder {
     color: rgba(185, 166, 243);
     text-align: center;
+    font-size: ${props => (props.size ? "20px" : "16px")};
+    font-style: italic;
   }
 
   :focus {
     border: none;
-    height: 2.9em;
+    padding: 19px;
+    font-size: 20px;
+    width: 85%;
+    text-align: center;
+    background-color: rgba(37, 206, 198, 1);
   }
 
   :hover {
-    background-color: rgb(255, 58, 80);
     color: white;
     border: none;
+    background-color: rgba(37, 206, 198, 1);
   }
-`;
-
-const FormWrapper = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 `;
 
 function Inputfields({ ...props }) {
   return (
-    <FormWrapper>
+    <>
       <Input {...props} />
-    </FormWrapper>
+    </>
   );
 }
 
