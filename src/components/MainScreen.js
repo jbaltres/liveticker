@@ -4,6 +4,7 @@ import SectionContent from "./SectionContent";
 import styled from "styled-components";
 import axios from "axios";
 import firebase from "../Firebase"
+import { useLocation } from "react-router";
 // import { locations } from "../api/LocationsArray";
 
 const Flexbox = styled.section`
@@ -19,10 +20,7 @@ const MainContainer = styled.div`
   overflow: scroll;
 `;
 
-function MainScreen() {
-
-  
-
+function LocationList() {
 
   const [locations, setLocation] = React.useState([]);
 
@@ -31,15 +29,34 @@ function MainScreen() {
     .firestore()
     .collection("locations")
     .onSnapshot((snapshot)=>{
-      console.log(snapshot.docs[3].id.headline)
+      const newLocations = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data()
+      }))
+
+      setLocation(newLocations)
     })
     },[])
-      
+    
+    return locations
+}
+
+    const MainScreen = () => {
+      const locations = LocationList()
     
 
   return (
-    <h1>{locations.id}</h1>
+    <MainContainer>
+    {locations.map(location => {
+      return (
+        <Flexbox key={location.id}>
+          <Counter time={location.time} location={location} />
+          <SectionContent location={location} />
+        </Flexbox>
+      );
+    })}
+  </MainContainer>
   );
-    }  
+}
 
 export default MainScreen;
