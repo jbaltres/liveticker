@@ -3,7 +3,8 @@ import Modal from "../components/Modal";
 import TimeInputfield from "../components/TimeInputfield";
 import Inputfields from "../components/Inputfield";
 import styled from "styled-components";
-import axios from "axios";
+//import axios from "axios";
+import firebase from "../Firebase"
 import ActionButton from "../components/Button";
 import { useHistory } from "react-router-dom";
 
@@ -38,7 +39,17 @@ export default function AddNewCountdown() {
   const [passwordValue, setPasswordValue] = React.useState("");
 
   function addToJsonDb() {
-    axios
+    
+    firebase.firestore().collection("locations").add({
+      time: timeValue,
+      headline: headerValue,
+      subheadline: descriptionValue,
+      entranceFee: entranceFeeValue,
+      locationName: locationNameValue,
+      adress: adressValue,
+      timestamp: Date.now()
+    })
+    /*axios
       .post("/locations", {
         time: timeValue,
         headline: headerValue,
@@ -54,6 +65,7 @@ export default function AddNewCountdown() {
       .catch(error => {
         console.log(error);
       });
+      */
   }
 
   let history = useHistory();

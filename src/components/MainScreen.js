@@ -3,6 +3,7 @@ import Counter from "./Counter";
 import SectionContent from "./SectionContent";
 import styled from "styled-components";
 import axios from "axios";
+import firebase from "../Firebase"
 // import { locations } from "../api/LocationsArray";
 
 const Flexbox = styled.section`
@@ -17,33 +18,28 @@ const Flexbox = styled.section`
 const MainContainer = styled.div`
   overflow: scroll;
 `;
+
 function MainScreen() {
+
+  
+
+
   const [locations, setLocation] = React.useState([]);
 
   React.useEffect(() => {
-    axios
-      .get("/locations")
-      .then(response => {
-        console.log(response);
-        setLocation(response.data.reverse());
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }, []);
+    firebase
+    .firestore()
+    .collection("locations")
+    .onSnapshot((snapshot)=>{
+      console.log(snapshot.docs[3].id.headline)
+    })
+    },[])
+      
+    
 
   return (
-    <MainContainer>
-      {locations.map(location => {
-        return (
-          <Flexbox key={location.id}>
-            <Counter time={location.time} location={location} />
-            <SectionContent location={location} />
-          </Flexbox>
-        );
-      })}
-    </MainContainer>
+    <h1>{locations.id}</h1>
   );
-}
+    }  
 
 export default MainScreen;
