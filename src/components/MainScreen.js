@@ -2,10 +2,8 @@ import React from "react";
 import Counter from "./Counter";
 import SectionContent from "./SectionContent";
 import styled from "styled-components";
-import axios from "axios";
 import firebase from "../Firebase"
-import { useLocation } from "react-router";
-// import { locations } from "../api/LocationsArray";
+
 
 const Flexbox = styled.section`
   display: flex;
